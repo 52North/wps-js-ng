@@ -1,9 +1,8 @@
 export class HTTP {
 
-
-  private _name: string;
-  private _get: string;
-  private _post: string;
+  private readonly _name: string;
+  private readonly _get: string;
+  private readonly _post: string;
 
   constructor(HTTPJson: HTTP) {
     if (HTTPJson != null)

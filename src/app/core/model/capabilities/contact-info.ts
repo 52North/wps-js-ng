@@ -2,7 +2,7 @@ import {Address} from './address';
 
 export class ContactInfo {
 
-  private _address: Address;
+  private readonly _address: Address;
 
   constructor(contactInfoJson: ContactInfo) {
     if (contactInfoJson != null) {

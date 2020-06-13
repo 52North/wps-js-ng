@@ -1,7 +1,7 @@
 import {DCP} from './dcp';
 
 export class Operation {
-  private _DCP: DCP;
+  private readonly _DCP: DCP;
 
   constructor(operationJson: any) {
     if (operationJson != null){

@@ -1,12 +1,12 @@
 export class ServiceIdentification {
 
-  private _title: string;
-  private _abstractValue: string;
-  private _keywords: string[];
-  private _serviceType: string;
-  private _serviceTypeVersions: string[];
-  private _fees: string;
-  private _accessConstraints: string;
+  private readonly _title: string;
+  private readonly _abstractValue: string;
+  private readonly _keywords: string[];
+  private readonly _serviceType: string;
+  private readonly _serviceTypeVersions: string[];
+  private readonly _fees: string;
+  private readonly _accessConstraints: string;
 
   constructor(serviceIdentificationJson: ServiceIdentification) {
     if (serviceIdentificationJson != null){

@@ -1,9 +1,9 @@
 export class Process {
-  private _title: string;
-  private _identifier: string;
-  private _processVersion: string;
-  private _jobControlOptions: string;
-  private _outputTransmission: string;
+  private readonly _title: string;
+  private readonly _identifier: string;
+  private readonly _processVersion: string;
+  private readonly _jobControlOptions: string;
+  private readonly _outputTransmission: string;
 
   constructor(processJson: any) {
     if (processJson != null){

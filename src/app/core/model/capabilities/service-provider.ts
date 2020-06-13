@@ -2,8 +2,8 @@ import {ServiceContact} from './service-contact';
 
 export class ServiceProvider {
 
-  private _providerName: string;
-  private _serviceContact: ServiceContact;
+  private readonly _providerName: string;
+  private readonly _serviceContact: ServiceContact;
 
   constructor(serviceProviderJson: any) {
     if (serviceProviderJson != null){

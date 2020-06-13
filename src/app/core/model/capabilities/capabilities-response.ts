@@ -1,17 +1,17 @@
 import {Capabilities} from './capabilities';
-import {ResponseDocument} from './response-document';
+import {CapabilitiesResponseDocument} from './capabilities-response-document';
 
 export class CapabilitiesResponse {
-  private _responseDocument: ResponseDocument;
-  private _capabilities: Capabilities;
+  private readonly _responseDocument: CapabilitiesResponseDocument;
+  private readonly _capabilities: Capabilities;
 
   constructor(capabilitiesResponseJson: any) {
-    this._responseDocument = new ResponseDocument(capabilitiesResponseJson.responseDocument);
+    this._responseDocument = new CapabilitiesResponseDocument(capabilitiesResponseJson.responseDocument);
     this._capabilities = new Capabilities(capabilitiesResponseJson.capabilities);
   }
 
 
-  get responseDocument(): ResponseDocument {
+  get responseDocument(): CapabilitiesResponseDocument {
     return this._responseDocument;
   }
 
