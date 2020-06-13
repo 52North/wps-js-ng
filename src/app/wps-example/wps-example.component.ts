@@ -18,7 +18,7 @@ export class WpsExampleComponent implements OnInit {
   selectedURL: string;
   urls: string[];
   versions: string[];
-  capabilitiesResponse: CapabilitiesResponse;
+  capabilitiesResponse: string;
 
   ngOnInit(): void {
     this.versions = new Array<string>('1.0.0', '2.0.0');
@@ -33,14 +33,14 @@ export class WpsExampleComponent implements OnInit {
   getCapabilitiesGET() {
     new WpsServiceTs(this.selectedVersion, this.selectedURL
     ).getCapabilitiesGET( (response: CapabilitiesResponse) => {
-      this.capabilitiesResponse = response;
+      this.capabilitiesResponse = JSON.stringify(response);
     });
   }
 
   getCapabilitiesPOST() {
     new WpsServiceTs(this.selectedVersion, this.selectedURL
     ).getCapabilitiesPOST( (response: CapabilitiesResponse) => {
-      this.capabilitiesResponse = response;
+      this.capabilitiesResponse = JSON.stringify(response);
     });
   }
 }
