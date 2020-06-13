@@ -69,8 +69,19 @@ export class WpsServiceTs {
     });
   }
 
-  serviceInject(): string{
-    return 'Wps Service Inject';
+  /**
+   * getCapabilities via HTTP Post
+   *
+   * @callbackFunction is triggered on success-event of JQuery.ajax method
+   */
+  getCapabilitiesPOST(callback: (capabilitiesResponse: CapabilitiesResponse) => void) {
+    let capabilitiesResponse: CapabilitiesResponse;
+    this.wpsServiceJS.getCapabilities_POST((response: any) => {
+      capabilitiesResponse = new CapabilitiesResponse(response);
+      callback(capabilitiesResponse);
+    });
   }
+
+
 
 }
