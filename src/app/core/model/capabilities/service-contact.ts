@@ -2,8 +2,8 @@ import {ContactInfo} from './contact-info';
 
 export class ServiceContact {
 
-  private _individualName: string;
-  private _contactInfo: ContactInfo;
+  private readonly _individualName: string;
+  private readonly _contactInfo: ContactInfo;
 
   get individualName(): string {
     return this._individualName;

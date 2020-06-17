@@ -1,12 +1,11 @@
 export class Address {
 
-
-  private _deliveryPoint: string;
-  private _city: string;
-  private _administrativeArea: string;
-  private _postalCode: string;
-  private _country: string;
-  private _electronicMailAddress: string;
+  private readonly _deliveryPoint: string;
+  private readonly _city: string;
+  private readonly _administrativeArea: string;
+  private readonly _postalCode: string;
+  private readonly _country: string;
+  private readonly _electronicMailAddress: string;
 
   constructor(addressJson: Address) {
     this._deliveryPoint = addressJson.deliveryPoint;
@@ -16,7 +15,6 @@ export class Address {
     this._country = addressJson.country;
     this._electronicMailAddress = addressJson.electronicMailAddress;
   }
-
 
   get deliveryPoint(): string {
     return this._deliveryPoint;

@@ -5,13 +5,13 @@ import {Process} from './process';
 
 export class Capabilities {
 
-  private _service: string;
-  private _version: string;
-  private _serviceIdentification: ServiceIdentification;
-  private _serviceProvider: ServiceProvider;
-  private _operations: Operation[];
-  private _languages: string[];
-  private _processes: Process[];
+  private readonly _service: string;
+  private readonly _version: string;
+  private readonly _serviceIdentification: ServiceIdentification;
+  private readonly _serviceProvider: ServiceProvider;
+  private readonly _operations: Operation[];
+  private readonly _languages: string[];
+  private readonly _processes: Process[];
 
   constructor(capabilitiesJson: any) {
     if (capabilitiesJson != null) {

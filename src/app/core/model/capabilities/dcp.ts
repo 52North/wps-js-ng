@@ -1,7 +1,7 @@
 import {HTTP} from './http';
 export class DCP {
 
-  private _HTTP: HTTP;
+  private readonly _HTTP: HTTP;
 
   constructor(DCPJson: DCP) {
     if (DCPJson != null) {
