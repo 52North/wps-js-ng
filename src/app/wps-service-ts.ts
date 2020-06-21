@@ -1,5 +1,6 @@
 import {Settings} from './core/settings';
 import {CapabilitiesResponse} from './core/model/capabilities/capabilities-response';
+import {ProcessDescriptionResponse} from './core/model/process.description/process-description-response';
 
 const WPS_VERSION_1 = '1.0.0';
 const WPS_VERSION_2 = '2.0.0';
@@ -82,6 +83,35 @@ export class WpsServiceTs {
     });
   }
 
+  /**
+   * process description via HTTP GET
+   *
+   * @callbackFunction is triggered on success-event of JQuery.ajax method.
+   *                   Takes the response object as argument
+   * @processIdentifier the identifier of the process
+   */
+  processDescriptionGet( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
+    let processDescriptionResponse: ProcessDescriptionResponse;
+    this.wpsServiceJS.describeProcess_GET( (response: any) => {
+      processDescriptionResponse = new ProcessDescriptionResponse(response);
+      callback(processDescriptionResponse);
+    }, processIdentifier);
+  }
+
+  /**
+   * process description via HTTP POST
+   *
+   * @callbackFunction is triggered on success-event of JQuery.ajax method.
+   *                   Takes the response object as argument
+   * @processIdentifier the identifier of the process
+   */
+  processDescriptionPost( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
+    let processDescriptionResponse: ProcessDescriptionResponse;
+    this.wpsServiceJS.describeProcess_POST( (response: any) => {
+      processDescriptionResponse = new ProcessDescriptionResponse(response);
+      callback(processDescriptionResponse);
+    }, processIdentifier);
+  }
 
 
 }
