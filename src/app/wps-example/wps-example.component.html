@@ -1,26 +1,36 @@
 <p>52 North Example - wps-ts</p>
 <h3>Capabilities</h3>
 <div style="width: 40%">
-{{title | json}}
-</div>
-<form wps-example-form="ngForm">
-  <div class="form-group">
-    <label for="version">Version</label>
-    <select class="form-control" [(ngModel)]="selectedVersion" id="version" name="version" ngModel required>
-      <option *ngFor="let version of versions" [value]="version" selected="selected">{{version}}</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="url">URL</label>
-    <select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
-      <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
-    </select>
-  </div>
-  <button (click)="getCapabilitiesGET()" >Capabilities Get</button>
-  <button (click)="getCapabilitiesPOST()">Capabilities Post</button>
-  <div>
-  <label for="capabilitiesResponse"></label>
-  <textarea [(ngModel)]="capabilitiesResponse" name="capabilitiesResponse" class="form-control" id="capabilitiesResponse" rows="3"></textarea>
-  </div>
 
-</form>
+
+  <form wps-example-form="ngForm">
+    <div class="form-group">
+      <label for="version">Version</label>
+      <select class="form-control" [(ngModel)]="selectedVersion" id="version" name="version" ngModel required>
+        <option *ngFor="let version of versions" [value]="version" selected="selected">{{version}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="url">URL</label>
+      <select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
+        <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
+      </select>
+    </div>
+    <button (click)="getCapabilitiesGET()" >Capabilities Get</button>
+    <button (click)="getCapabilitiesPOST()">Capabilities Post</button>
+
+    <div *ngIf="capabilitiesResponse">
+      <label for="capabilities">Capabilities</label>
+      <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities" id="capabilities"  ngModel>
+        <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
+      </select>
+      <button (click)="processDescriptionGet()">Process Details</button>
+      <button (click)="processDescriptionPost()">Process Details</button>
+    </div>
+    <div class="jumbotron" *ngIf="processDescriptionResponse" >
+      <h3>Process Description Object</h3>
+      <p class="lead">{{processDescriptionResponse | json}}</p>
+    </div>
+
+  </form>
+</div>
