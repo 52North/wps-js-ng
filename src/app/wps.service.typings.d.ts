@@ -38,6 +38,39 @@ declare namespace WpsServiceModule {
     getCapabilities_POST(callback: (response:
                                       import('./core/model/capabilities/capabilities-response').CapabilitiesResponse) => void): void;
 
+    /**
+     * getCapabilities via HTTP POST
+     *
+     * @callbackFunction is triggered on success-event of JQuery.ajax method.
+     *                   Takes the response object as argument
+     */
+    getCapabilities_POST(callback: (response:
+                                      import('./core/model/capabilities/capabilities-response').CapabilitiesResponse) => void): void;
+
+    /**
+     * process description via HTTP GET
+     *
+     * @callbackFunction is triggered on success-event of JQuery.ajax method.
+     *                   Takes the response object as argument
+     * @processIdentifier the identifier of the process
+     */
+    describeProcess_GET(callback: (response:
+                                     import('./core/model/process.description/process-description-response')
+                                       .ProcessDescriptionResponse) => void,
+                        processIdentifier: string);
+
+    /**
+     * process description via HTTP POST
+     *
+     * @callbackFunction is triggered on success-event of JQuery.ajax method.
+     *                   Takes the response object as argument
+     * @processIdentifier the identifier of the process
+     */
+    describeProcess_POST(callback: (response:
+                                      import('./core/model/process.description/process-description-response')
+                                        .ProcessDescriptionResponse) => void,
+                         processIdentifier: string);
+
   }
 }
 
