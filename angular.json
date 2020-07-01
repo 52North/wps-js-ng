@@ -28,7 +28,8 @@
               "src/styles.css"
             ],
             "scripts": [ "node_modules/jquery/dist/jquery.js",
-              "src/assets/wps-js-all.js"]
+              "node_modules/wps-js-52-north/src/web/js/wps-js-all.js"
+            ]
           },
           "configurations": {
             "production": {
