@@ -1,6 +1,9 @@
 import {Settings} from './core/settings';
 import {CapabilitiesResponse} from './core/model/capabilities/capabilities-response';
 import {ProcessDescriptionResponse} from './core/model/process.description/process-description-response';
+import {ExecuteResponse} from './core/model/execute.process/response/execute-response';
+import {DataInput} from './core/model/execute.process/request/input/data-input';
+import {DataOutput} from './core/model/execute.process/request/output/data-output';
 
 const WPS_VERSION_1 = '1.0.0';
 const WPS_VERSION_2 = '2.0.0';
@@ -111,6 +114,36 @@ export class WpsServiceTs {
       processDescriptionResponse = new ProcessDescriptionResponse(response);
       callback(processDescriptionResponse);
     }, processIdentifier);
+  }
+
+
+  /**
+   * WPS execute request via HTTP POST
+   *
+   * @callbackFunction is triggered on success-event of JQuery.ajax method.
+   *                   Takes the response object as argument
+   * @processIdentifier the identifier of the process
+   * @responseFormat either "raw" or "document", default is "document"
+   * @executionMode either "sync" or "async";
+   * @lineage only relevant for WPS 1.0; boolean, if "true" then returned
+   *          response will include original input and output definition
+   * @inputs an array of needed Input objects, use JS-object InputGenerator to
+   *         create inputs
+   * @outputs an array of requested Output objects, use JS-object
+   *          OutputGenerator to create inputs
+   */
+
+  execute(callback: (response: ExecuteResponse) => void , processIdentifier: string, responseFormat: string, executionMode: string,
+          lineage: boolean, inputs: Array<DataInput>, outputs: Array<DataOutput>) {
+    let executeResponse;
+    this.wpsServiceJS.execute( (response: any) => {
+      // Check for error
+      if (this.version === '2.0.0' && response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
+      executeResponse = response;
+      callback(new ExecuteResponse(executeResponse.executeResponse));
+    }, processIdentifier, responseFormat, executionMode, lineage, inputs, outputs);
   }
 
 
