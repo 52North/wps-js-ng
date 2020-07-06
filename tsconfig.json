@@ -12,6 +12,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/wps-ng/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/wps-ng/tsconfig.spec.json"
     }
   ]
 }
