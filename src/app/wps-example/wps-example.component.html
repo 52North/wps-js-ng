@@ -1,5 +1,5 @@
 <body>
-
+<div class="split left">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Capabilities</a>
@@ -56,6 +56,9 @@
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <h3>Execute Process</h3>
+      <button (click)="executeV1Sync()">Execute V1 Sync</button>
+      <button (click)="executeV2Sync()">Execute V2 Sync</button>
+      <button (click)="executeV1Async()">Execute V1 ASync</button>
       <button (click)="executeV2Async()">Execute V2 Async</button>
     </div>
 
@@ -74,6 +77,7 @@
       </div>
     </div>
 
+  </div>
 </div>
 
 <div class="split right">
