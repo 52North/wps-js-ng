@@ -14,30 +14,39 @@ export class WpsExampleComponent implements OnInit {
   private WPS_VERSION_2 = '2.0.0';
   private wpsServiceJS: any;
   title: CapabilitiesResponse;
-  selectedVersion: string;
-  selectedURL: string;
+  selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
+  selectedVersion = '2.0.0';
   urls: string[];
   versions: string[];
   capabilitiesResponse: CapabilitiesResponse;
   selectedProcessIdentifier: string;
   private wpsService: WpsServiceTs;
   processDescriptionResponse: ProcessDescriptionResponse;
+  rightScreenTitle: string;
+  rightScreenJsonContent: string;
+  jobIdResult: string;
+  jobIdStatus: any;
+
 
   ngOnInit(): void {
-    this.versions = new Array<string>(this.WPS_VERSION_1, this.WPS_VERSION_2);
-    this.urls = new Array<string>('http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
+    this.wpsService = new WpsServiceTs( this.selectedVersion, this.selectedURL);
+    this.urls = [
+      'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',
       'http://zoo-project.org/cgi-bin/zoo_loader.cgi',
-      'https://maps.dwd.de/geoserver/ows');
-    this.selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
-    this.selectedVersion = this.WPS_VERSION_1;
+      'https://maps.dwd.de/geoserver/ows'
+    ];
+    this.versions = ['1.0.0', '2.0.0'];
+    this.rightScreenTitle = 'Output appears here';
   }
+
 
   getCapabilitiesGET() {
     this.wpsService = new WpsServiceTs(this.selectedVersion, this.selectedURL);
     this.wpsService.getCapabilitiesGET( (e: CapabilitiesResponse) => {
       console.log(e);
       this.capabilitiesResponse = e;
+      this.updateRightScreenContents('Typescript Casted Capabilities Response', this.capabilitiesResponse);
     });
   }
 
@@ -46,6 +55,7 @@ export class WpsExampleComponent implements OnInit {
     this.wpsService.getCapabilitiesPOST( (e: CapabilitiesResponse) => {
       console.log(e);
       this.capabilitiesResponse = e;
+      this.updateRightScreenContents('Typescript Casted Capabilities Response', this.capabilitiesResponse);
     });
   }
 
@@ -53,6 +63,7 @@ export class WpsExampleComponent implements OnInit {
     this.wpsService.processDescriptionGet(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
       console.log(e);
       this.processDescriptionResponse = e;
+      this.updateRightScreenContents('Typescript Casted Process Description Response', this.processDescriptionResponse);
     });
   }
 
@@ -60,7 +71,35 @@ export class WpsExampleComponent implements OnInit {
     this.wpsService.processDescriptionPost(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
       console.log(e);
       this.processDescriptionResponse = e;
+      this.updateRightScreenContents('Typescript Casted Process Description Response', this.processDescriptionResponse);
     });
   }
+  executeV2Async() {
 
+  }
+
+  updateRightScreenContents(title: string, jsonContent: any) {
+    this.rightScreenTitle = title;
+    this.rightScreenJsonContent = jsonContent;
+  }
+
+  getResult() {
+
+  }
+
+  getStatus() {
+
+  }
+
+  executeV1Sync() {
+
+  }
+
+  executeV2Sync() {
+
+  }
+
+  executeV1Async() {
+
+  }
 }

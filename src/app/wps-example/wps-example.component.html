@@ -1,36 +1,89 @@
-<p>52 North Example - wps-ts</p>
-<h3>Capabilities</h3>
-<div style="width: 40%">
-
-
-  <form wps-example-form="ngForm">
-    <div class="form-group">
-      <label for="version">Version</label>
-      <select class="form-control" [(ngModel)]="selectedVersion" id="version" name="version" ngModel required>
-        <option *ngFor="let version of versions" [value]="version" selected="selected">{{version}}</option>
-      </select>
+<body>
+<div class="split left">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Capabilities</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Process Description</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Execute</a>
+      <a class="nav-item nav-link" id="nav-4-tab" data-toggle="tab" href="#nav-4" role="tab" aria-controls="nav-4" aria-selected="false">Status & Result</a>
     </div>
-    <div class="form-group">
-      <label for="url">URL</label>
-      <select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
-        <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
-      </select>
-    </div>
-    <button (click)="getCapabilitiesGET()" >Capabilities Get</button>
-    <button (click)="getCapabilitiesPOST()">Capabilities Post</button>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <h3>Capabilities</h3>
+      <form wps-example-form="ngForm">
+        <div class="form-group">
+          <label for="version">Version</label>
+          <select class="form-control" [(ngModel)]="selectedVersion" id="version" name="version" ngModel required>
+            <option *ngFor="let version of versions" [value]="version" selected="selected">{{version}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
+            <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
+          </select>
+        </div>
+        <button (click)="getCapabilitiesGET()" >Capabilities Get</button>
+        <button (click)="getCapabilitiesPOST()">Capabilities Post</button>
 
-    <div *ngIf="capabilitiesResponse">
-      <label for="capabilities">Capabilities</label>
-      <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities" id="capabilities"  ngModel>
-        <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
-      </select>
-      <button (click)="processDescriptionGet()">Process Details</button>
-      <button (click)="processDescriptionPost()">Process Details</button>
+        <div *ngIf="capabilitiesResponse">
+          <label for="capabilities">Capabilities List:</label>
+          <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities"  ngModel>
+            <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
+          </select>
+        </div>
+
+      </form>
     </div>
-    <div class="jumbotron" *ngIf="processDescriptionResponse" >
-      <h3>Process Description Object</h3>
-      <p class="lead">{{processDescriptionResponse | json}}</p>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <form wps-example-form="ngForm">
+        <div *ngIf="capabilitiesResponse">
+          <h3>Process Description:</h3>
+
+          <label for="capabilities">Capabilities List:</label>
+          <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities" id="capabilities"  ngModel>
+            <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
+          </select>
+          <button (click)="processDescriptionGet()">Process Details Get</button>
+          <button (click)="processDescriptionPost()">Process Details Post</button>
+        </div>
+        <div *ngIf="!capabilitiesResponse">
+          <h3>Process Description:</h3>
+          <h5>Fetch Capabilities to get the list of process available.</h5>
+        </div>
+      </form>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <h3>Execute Process</h3>
+      <button (click)="executeV1Sync()">Execute V1 Sync</button>
+      <button (click)="executeV2Sync()">Execute V2 Sync</button>
+      <button (click)="executeV1Async()">Execute V1 ASync</button>
+      <button (click)="executeV2Async()">Execute V2 Async</button>
     </div>
 
-  </form>
+    <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="input-group mb-3">
+        <input  [(ngModel)]="jobIdStatus" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon1">
+        <div class="input-group-append">
+          <button  (click)="getStatus()" class="btn btn-outline-secondary" type="button" id="button-addon1">Get Status</button>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <input [(ngModel)]="jobIdResult" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button (click)="getResult()" class="btn btn-outline-secondary" type="button" id="button-addon2">Get Result</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+<div class="split right">
+  <div class="jumbotron" >
+    <h3>{{ rightScreenTitle }}</h3>
+    <pre>{{ rightScreenJsonContent | json }}</pre>
+  </div>
+</div>
+</body>
