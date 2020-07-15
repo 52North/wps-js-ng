@@ -1,26 +1,21 @@
-import {ExecuteResponseDocument} from './execute-response-document';
+import {ExecuteResponseObject} from './execute-response-object';
 
 export class ExecuteResponse {
-  private readonly _type: string;
-  private readonly _serviceVersion: string;
-  private readonly _responseDocument: ExecuteResponseDocument;
+  private readonly _resultDocument: Document;
+  private readonly _executeResponse: ExecuteResponseObject;
 
   constructor(executeResponseJson: any) {
-    // type: string, serviceVersion: string, responseDocument: ExecuteResponseDocument
-    this._type = executeResponseJson.type;
-    this._serviceVersion = executeResponseJson.serviceVersion;
-    this._responseDocument = new ExecuteResponseDocument(executeResponseJson.responseDocument);
+    if (executeResponseJson != null) {
+      this._resultDocument = executeResponseJson.responseDocument;
+      this._executeResponse = new ExecuteResponseObject(executeResponseJson.executeResponse);
+    }
   }
 
-  get type(): string {
-    return this._type;
+  get resultDocument(): Document {
+    return this._resultDocument;
   }
 
-  get serviceVersion(): string {
-    return this._serviceVersion;
-  }
-
-  get responseDocument(): ExecuteResponseDocument {
-    return this._responseDocument;
+  get executeResponse(): ExecuteResponseObject {
+    return this._executeResponse;
   }
 }
