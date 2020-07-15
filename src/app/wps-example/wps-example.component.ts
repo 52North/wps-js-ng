@@ -74,32 +74,22 @@ export class WpsExampleComponent implements OnInit {
       this.updateRightScreenContents('Typescript Casted Process Description Response', this.processDescriptionResponse);
     });
   }
-  executeV2Async() {
 
-  }
 
   updateRightScreenContents(title: string, jsonContent: any) {
     this.rightScreenTitle = title;
     this.rightScreenJsonContent = jsonContent;
   }
 
-  getResult() {
-
+  receiveMessage($event){
+    this.updateRightScreenContents('Execute Process', $event);
   }
 
   getStatus() {
 
   }
 
-  executeV1Sync() {
-
-  }
-
-  executeV2Sync() {
-
-  }
-
-  executeV1Async() {
+  getResult() {
 
   }
 }

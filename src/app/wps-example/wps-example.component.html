@@ -55,11 +55,7 @@
       </form>
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-      <h3>Execute Process</h3>
-      <button (click)="executeV1Sync()">Execute V1 Sync</button>
-      <button (click)="executeV2Sync()">Execute V2 Sync</button>
-      <button (click)="executeV1Async()">Execute V1 ASync</button>
-      <button (click)="executeV2Async()">Execute V2 Async</button>
+      <app-execute-examples (messageEvent)="receiveMessage($event)"></app-execute-examples>
     </div>
 
     <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
