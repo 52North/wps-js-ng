@@ -3,9 +3,9 @@ import {ExecuteOutput} from './execute-output';
 import {Status} from './status';
 
 export class ExecuteResponseDocument {
-  // Property for Version 2
+  // Property only for Version 2
   private readonly _jobId: string;
-  // Property for Async call
+  // Property only for Async call
   private readonly _statusLocation: string;
   private readonly _expirationDate: string;
 
