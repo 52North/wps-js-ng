@@ -138,11 +138,11 @@ export class WpsServiceTs {
     let executeResponse;
     this.wpsServiceJS.execute( (response: any) => {
       // Check for error
-      if (this.version === '2.0.0' && response.textStatus === 'error') {
+      if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
       executeResponse = response;
-      callback(new ExecuteResponse(executeResponse.executeResponse));
+      callback(new ExecuteResponse(executeResponse));
     }, processIdentifier, responseFormat, executionMode, lineage, inputs, outputs);
   }
 
