@@ -6,17 +6,21 @@ import { WpsExampleComponent } from './wps-example/wps-example.component';
 import {FormsModule} from '@angular/forms';
 import { ExecuteExamplesComponent } from './execute-examples/execute-examples.component';
 import {WpsNgModule} from 'wps-ng';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WpsExampleComponent,
-    ExecuteExamplesComponent
+    ExecuteExamplesComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    WpsNgModule
+    WpsNgModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
