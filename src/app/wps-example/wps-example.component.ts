@@ -39,7 +39,8 @@ export class WpsExampleComponent implements OnInit {
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',
       'http://zoo-project.org/cgi-bin/zoo_loader.cgi',
-      'https://maps.dwd.de/geoserver/ows'
+      'https://maps.dwd.de/geoserver/ows',
+      'https://riesgos.52north.org/wps/WebProcessingService'
     ];
     this.versions = ['1.0.0', '2.0.0'];
     this.rightScreenTitle = 'Output appears here';

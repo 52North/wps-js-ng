@@ -19,9 +19,15 @@ export class Input {
       this._identifier = inputResponse.identifier;
       this._minOccurs = inputResponse.minOccurs;
       this._maxOccurs = inputResponse.maxOccurs;
-      this._literalData =  new LiteralData(inputResponse.literalData);
-      this._complexData =  new ComplexData(inputResponse.literalData);
-      this._bboxData =  new BBoxData(inputResponse.literalData);
+      if (inputResponse.literalData !== undefined) {
+        this._literalData =  new LiteralData(inputResponse.literalData);
+      }
+      if (inputResponse.complexData !== undefined) {
+        this._complexData = new ComplexData(inputResponse.complexData);
+      }
+      if (inputResponse.boundingBoxData !== undefined) {
+        this._bboxData = new BBoxData(inputResponse.boundingBoxData);
+      }
     }
   }
 
