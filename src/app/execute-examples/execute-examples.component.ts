@@ -6,7 +6,7 @@ import {DataInput} from '../../../projects/wps-ng/src/model/execute.process/requ
 import {ComplexDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/complex-data-output';
 import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/data-output';
 import {ExecuteResponse} from '../../../dist/wps-ng/model/execute.process/response/execute-response';
-import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
+import {BBoxDataInput} from 'wps-ng';
 import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
 import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
 /*import {ExecuteResponse} from '../../../dist/wps-ng/model/execute.process/response/execute-response';
