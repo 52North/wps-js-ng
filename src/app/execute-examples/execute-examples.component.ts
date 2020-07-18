@@ -1,23 +1,16 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {WpsNgService} from 'wps-ng';
-import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
-import {LiteralDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/literal-data-input';
-import {DataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/data-input';
-import {ComplexDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/complex-data-output';
-import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/data-output';
-import {ExecuteResponse} from '../../../dist/wps-ng/model/execute.process/response/execute-response';
-import {BBoxDataInput} from 'wps-ng';
-import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
-import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
-/*import {ExecuteResponse} from '../../../dist/wps-ng/model/execute.process/response/execute-response';
-import {ComplexDataInput} from '../../../dist/wps-ng/model/execute.process/request/input/complex-data-input';
-import {LiteralDataInput} from '../../../dist/wps-ng/model/execute.process/request/input/literal-data-input';
-import {DataInput} from '../../../dist/wps-ng/model/execute.process/request/input/data-input';
-import {ComplexDataOutput} from '../../../dist/wps-ng/model/execute.process/request/output/complex-data-output';
-import {DataOutput} from '../../../dist/wps-ng/model/execute.process/request/output/data-output';
-import {BBoxDataInput} from '../../../dist/wps-ng/model/execute.process/request/input/b-box-data-input';
-import {BBoxDataOutput} from '../../../dist/wps-ng/model/execute.process/request/output/b-box-data-output';
-import {LiteralDataOutput} from '../../../dist/wps-ng/model/execute.process/request/output/literal-data-output';*/
+import {
+  BBoxDataInput, BBoxDataOutput,
+  ComplexDataInput,
+  ComplexDataOutput,
+  DataInput,
+  DataOutput,
+  ExecuteResponse,
+  LiteralDataInput, LiteralDataOutput,
+  WpsNgService
+} from 'wps-ng';
+
+
 
 @Component({
   selector: 'app-execute-examples',
