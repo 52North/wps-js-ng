@@ -8,6 +8,9 @@ import { ExecuteExamplesComponent } from './execute-examples/execute-examples.co
 import {WpsNgModule} from 'wps-ng';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSelectModule} from '@angular/material/select';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     BrowserModule,
     FormsModule,
     WpsNgModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
