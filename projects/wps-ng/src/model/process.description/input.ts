@@ -1,4 +1,6 @@
 import {LiteralData} from './literal-data';
+import {ComplexData} from './complex-data';
+import {BBoxData} from './b-box-data';
 
 export class Input {
   private readonly _title: string;
@@ -7,6 +9,8 @@ export class Input {
   private readonly _minOccurs: string;
   private readonly _maxOccurs: string;
   private readonly _literalData: LiteralData;
+  private readonly _complexData: ComplexData;
+  private readonly _bboxData: BBoxData;
 
   constructor(inputResponse: any) {
     if (inputResponse != null){
@@ -16,6 +20,8 @@ export class Input {
       this._minOccurs = inputResponse.minOccurs;
       this._maxOccurs = inputResponse.maxOccurs;
       this._literalData =  new LiteralData(inputResponse.literalData);
+      this._complexData =  new ComplexData(inputResponse.literalData);
+      this._bboxData =  new BBoxData(inputResponse.literalData);
     }
   }
 

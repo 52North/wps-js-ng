@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {WpsNgService} from 'wps-ng';
+import {CapabilitiesResponse} from '../../../projects/wps-ng/src/model/capabilities/capabilities-response';
+import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
+import {ProcessDescriptionResponse} from '../../../projects/wps-ng/src/model/process.description/process-description-response';
+/*import {WpsNgService} from 'wps-ng';
 import {CapabilitiesResponse} from 'wps-ng';
-import {ProcessDescriptionResponse} from 'wps-ng';
+import {ProcessDescriptionResponse} from 'wps-ng';*/
+
+
 
 @Component({
   selector: 'app-wps-example',
