@@ -3,6 +3,7 @@
  */
 
 export * from './lib/wps-ng.service';
+export * from './lib/wps-ng.component';
 export * from './lib/wps-ng.module';
 export * from './model/capabilities/capabilities';
 export * from './model/capabilities/address';
