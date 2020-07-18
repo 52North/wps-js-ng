@@ -6,7 +6,8 @@ import {
   DataInput,
   DataOutput,
   ExecuteResponse,
-  LiteralDataInput, LiteralDataOutput,
+  LiteralDataInput,
+  LiteralDataOutput,
   WpsNgService
 } from 'wps-ng';
 
@@ -23,12 +24,7 @@ export class ExecuteExamplesComponent implements OnInit {
   versions: string[];
   selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
   selectedVersion = '1.0.0';
-  selectedProcessIdentifier: string;
-  active: boolean;
   rightScreenTitle: string;
-  rightScreenJsonContent: string;
-  jobIdStatus: string;
-  jobIdResult: string;
   wpsService: WpsNgService;
   response: ExecuteResponse;
 

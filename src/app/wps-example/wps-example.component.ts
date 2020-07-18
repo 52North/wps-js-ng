@@ -86,7 +86,10 @@ export class WpsExampleComponent implements OnInit {
   }
 
   getStatus() {
-
+    this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
+    this.wpsService.getStatus_WPS_2_0((response) => {
+      this.updateRightScreenContents('Get Status Response', response);
+    }, this.jobIdStatus);
   }
 
   getResult() {
