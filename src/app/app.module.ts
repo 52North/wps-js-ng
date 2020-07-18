@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { WpsExampleComponent } from './wps-example/wps-example.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 import { ExecuteExamplesComponent } from './execute-examples/execute-examples.component';
+import {WpsNgModule} from 'wps-ng';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ExecuteExamplesComponent } from './execute-examples/execute-examples.co
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    WpsNgModule
   ],
   providers: [],
   bootstrap: [AppComponent]

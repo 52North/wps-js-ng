@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {WpsServiceTs} from '../wps-service-ts';
-import {CapabilitiesResponse} from '../core/model/capabilities/capabilities-response';
-import {ProcessDescriptionResponse} from '../core/model/process.description/process-description-response';
+import {WpsNgService} from 'wps-ng';
+import {CapabilitiesResponse} from '../../../dist/wps-ng/model/capabilities/capabilities-response';
+import {ProcessDescriptionResponse} from '../../../dist/wps-ng/model/process.description/process-description-response';
 
 @Component({
   selector: 'app-wps-example',
@@ -20,7 +20,7 @@ export class WpsExampleComponent implements OnInit {
   versions: string[];
   capabilitiesResponse: CapabilitiesResponse;
   selectedProcessIdentifier: string;
-  private wpsService: WpsServiceTs;
+  private wpsService: WpsNgService;
   processDescriptionResponse: ProcessDescriptionResponse;
   rightScreenTitle: string;
   rightScreenJsonContent: string;
@@ -29,7 +29,7 @@ export class WpsExampleComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.wpsService = new WpsServiceTs( this.selectedVersion, this.selectedURL);
+    this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
     this.urls = [
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',
@@ -42,7 +42,7 @@ export class WpsExampleComponent implements OnInit {
 
 
   getCapabilitiesGET() {
-    this.wpsService = new WpsServiceTs(this.selectedVersion, this.selectedURL);
+    this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.wpsService.getCapabilitiesGET( (e: CapabilitiesResponse) => {
       console.log(e);
       this.capabilitiesResponse = e;
@@ -51,7 +51,7 @@ export class WpsExampleComponent implements OnInit {
   }
 
   getCapabilitiesPOST() {
-    this.wpsService = new WpsServiceTs(this.selectedVersion, this.selectedURL);
+    this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.wpsService.getCapabilitiesPOST( (e: CapabilitiesResponse) => {
       console.log(e);
       this.capabilitiesResponse = e;
