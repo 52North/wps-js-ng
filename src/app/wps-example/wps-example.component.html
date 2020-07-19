@@ -14,7 +14,7 @@
       <app-capabilities [urls]="urls" [versions]="versions" (messageEvent)="receiveCapabilitiesResponse($event)"></app-capabilities>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <app-process-description [capabilitiesResponse]="capabilitiesResponse" [selectedUrl]="selectedURL" [selectedVersion]="selectedVersion" [selectedProcessIdentifier]="selectedProcessIdentifier" ></app-process-description>
+      <app-process-description (messageEvent)="receiveProcessDescriptionResponse($event)" [capabilitiesResponse]="capabilitiesResponse" [selectedUrl]="selectedURL" [selectedVersion]="selectedVersion" [selectedProcessIdentifier]="selectedProcessIdentifier" ></app-process-description>
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <app-execute-process></app-execute-process>
@@ -23,21 +23,7 @@
 
     <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
       <app-status-result></app-status-result>
-
-      <div class="input-group mb-3">
-        <input  [(ngModel)]="jobIdStatus" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon1">
-        <div class="input-group-append">
-          <button  (click)="getStatus()" class="btn btn-outline-secondary" type="button" id="button-addon1">Get Status</button>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <input [(ngModel)]="jobIdResult" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button (click)="getResult()" class="btn btn-outline-secondary" type="button" id="button-addon2">Get Result</button>
-        </div>
-      </div>
     </div>
-
   </div>
 </div>
 

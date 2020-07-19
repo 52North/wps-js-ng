@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CapabilitiesResponse, ProcessDescriptionResponse, WpsNgService} from 'wps-ng';
-import {CapabilitiesDataService} from "../capabilities-data.service";
+import {CapabilitiesDataService} from '../capabilities-data.service';
 
 @Component({
   selector: 'app-process-description',

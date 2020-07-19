@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ExecuteResponse, WpsNgService} from 'wps-ng';
+import {ExecuteResponse, ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesResponse} from 'wps-ng';
 import {ProcessDescriptionResponse} from 'wps-ng';
 
@@ -45,23 +45,23 @@ export class WpsExampleComponent implements OnInit {
     this.rightScreenJsonContent = jsonContent;
   }
 
-
-  getStatus() {
-    this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
-    this.wpsService.getStatus_WPS_2_0((response) => {
-      this.updateRightScreenContents('Get Status Response', response);
-    }, this.jobIdStatus);
-  }
-
-  getResult() {
-
-  }
-
   receiveCapabilitiesResponse($event: CapabilitiesResponse) {
     this.updateRightScreenContents('Capabilities Response:', $event);
   }
 
+  receiveProcessDescriptionResponse($event: ProcessDescriptionResponse) {
+    this.updateRightScreenContents('Process Description Response:', $event);
+  }
+
   receiveExecuteProcessResponse($event: ExecuteResponse){
+    this.updateRightScreenContents('Execute Process', $event);
+  }
+
+  receiveStatusResponse($event: StatusResponse){
+    this.updateRightScreenContents('Execute Process', $event);
+  }
+
+  receiveResultResponse($event: ResultResponse){
     this.updateRightScreenContents('Execute Process', $event);
   }
 }
