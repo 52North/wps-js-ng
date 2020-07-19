@@ -22,10 +22,10 @@ export class Input {
       if (inputResponse.literalData !== undefined) {
         this._literalData =  new LiteralData(inputResponse.literalData);
       }
-      if (inputResponse.complexData !== undefined) {
+      else if (inputResponse.complexData !== undefined) {
         this._complexData = new ComplexData(inputResponse.complexData);
       }
-      if (inputResponse.boundingBoxData !== undefined) {
+      else if (inputResponse.boundingBoxData !== undefined) {
         this._bboxData = new BBoxData(inputResponse.boundingBoxData);
       }
     }
