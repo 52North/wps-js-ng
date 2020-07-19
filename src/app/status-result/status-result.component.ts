@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {WpsNgService} from "wps-ng";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
 
 @Component({
   selector: 'app-status-result',
@@ -11,6 +11,10 @@ export class StatusResultComponent implements OnInit {
   jobIdResult: string;
   private wpsService: WpsNgService;
   private selectedURL: string;
+  @Output() statusEvent  = new EventEmitter<StatusResponse>();
+  @Output() resultEvent  = new EventEmitter<ResultResponse>();
+  private resultResponse: ResultResponse;
+  private statusResponse: StatusResponse;
 
   constructor() { }
 
@@ -27,7 +31,18 @@ export class StatusResultComponent implements OnInit {
   getResult() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
     this.wpsService.getResult_WPS_2_0(response => {
+      this.resultResponse = response;
       // this.updateRightScreenContents('Get Result Response', response);
     }, this.jobIdResult);
   }
+
+
+  sendStatusResponse(){
+    this.statusEvent.emit(this.statusResponse);
+  }
+
+  sendResultResponse(){
+    this.resultEvent.emit(this.resultResponse);
+  }
+
 }

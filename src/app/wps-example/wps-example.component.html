@@ -22,11 +22,10 @@
     </div>
 
     <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <app-status-result></app-status-result>
+      <app-status-result (resultEvent)="receiveResultResponse($event)" (statusEvent)="receiveStatusResponse($event)" ></app-status-result>
     </div>
   </div>
 </div>
-
 <div class="split right">
   <div class="jumbotron" >
     <h2>{{ rightScreenTitle }}</h2>
