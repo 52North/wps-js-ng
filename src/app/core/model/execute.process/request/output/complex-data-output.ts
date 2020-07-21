@@ -11,6 +11,7 @@ export class ComplexDataOutput implements  DataOutput {
   title: string;
   abstractValue: any;
   value: any;
+  transmission: string;
 
   /**
    * the following parameters are mandatory: identifier
@@ -25,12 +26,12 @@ export class ComplexDataOutput implements  DataOutput {
    * @asReference boolean, "true" or "false"
    * @title new title
    * @abstractValue new description as text of the 'Abstract' element
-   * 				  of the response document
+   *          of the response document
    */
 
 
   constructor(identifier: string, mimeType: string, schema: string, encoding: string,
-              uom: string, asReference: boolean = false, title: string, abstractValue: any, value?: any) {
+              uom: string, asReference: boolean = false, title: string, abstractValue: any, value?: any, transmission?: string) {
     this.type = 'complex';
     this.identifier = identifier;
     this.mimeType = mimeType;
@@ -41,5 +42,6 @@ export class ComplexDataOutput implements  DataOutput {
     this.title = title;
     this.abstractValue = abstractValue;
     this.value = value;
+    this.transmission = transmission;
   }
 }
