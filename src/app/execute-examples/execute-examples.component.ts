@@ -1,14 +1,17 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {WpsServiceTs} from '../wps-service-ts';
-import {ExecuteResponse} from '../core/model/execute.process/response/execute-response';
-import {ComplexDataInput} from '../core/model/execute.process/request/input/complex-data-input';
-import {LiteralDataInput} from '../core/model/execute.process/request/input/literal-data-input';
-import {ComplexDataOutput} from '../core/model/execute.process/request/output/complex-data-output';
-import {DataInput} from '../core/model/execute.process/request/input/data-input';
-import {DataOutput} from "../core/model/execute.process/request/output/data-output";
-import {BBoxDataInput} from "../core/model/execute.process/request/input/b-box-data-input";
-import {LiteralDataOutput} from "../core/model/execute.process/request/output/literal-data-output";
-import {BBoxDataOutput} from "../core/model/execute.process/request/output/b-box-data-output";
+import {
+  BBoxDataInput, BBoxDataOutput,
+  ComplexDataInput,
+  ComplexDataOutput,
+  DataInput,
+  DataOutput,
+  ExecuteResponse,
+  LiteralDataInput,
+  LiteralDataOutput,
+  WpsNgService
+} from 'wps-ng';
+
+
 
 @Component({
   selector: 'app-execute-examples',
@@ -21,19 +24,14 @@ export class ExecuteExamplesComponent implements OnInit {
   versions: string[];
   selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
   selectedVersion = '1.0.0';
-  selectedProcessIdentifier: string;
-  active: boolean;
   rightScreenTitle: string;
-  rightScreenJsonContent: string;
-  jobIdStatus: string;
-  jobIdResult: string;
-  wpsService: WpsServiceTs;
+  wpsService: WpsNgService;
   response: ExecuteResponse;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.wpsService = new WpsServiceTs( this.selectedVersion, this.selectedURL);
+    this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
     this.urls = [
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',
@@ -46,7 +44,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV1Sync() {
-    this.wpsService = new WpsServiceTs('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'application/x-zipped-shp',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
@@ -82,7 +80,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV1Async() {
-    this.wpsService = new WpsServiceTs('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
@@ -118,7 +116,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV2Sync() {
-    this.wpsService = new WpsServiceTs('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'text/xml', 'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
@@ -140,7 +138,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV2Async() {
-    this.wpsService = new WpsServiceTs('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'text/xml', 'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
@@ -162,7 +160,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeExample_SimpleBufferAlgorithm() {
-    this.wpsService = new WpsServiceTs('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'text/xml', 'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
@@ -185,7 +183,7 @@ export class ExecuteExamplesComponent implements OnInit {
 
 
   executeExample_TiffImage() {
-    this.wpsService = new WpsServiceTs('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
 
     const complexInput = new ComplexDataInput('input',
       'image/tiff', 'http://www.opengis.net/ows/1.1', undefined, true,
@@ -205,7 +203,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeInlineShape62_Inline() {
-    this.wpsService = new WpsServiceTs('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
 
     const complexInput = new ComplexDataInput('data',
       'application/x-zipped-shp', undefined, 'base64', false,
@@ -228,7 +226,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeExample_ManyInputs() {
-    this.wpsService = new WpsServiceTs('2.0.0', 'https://riesgos.52north.org/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('2.0.0', 'https://riesgos.52north.org/wps/WebProcessingService');
 
     const inputBoundingBox = new BBoxDataInput('input-boundingbox', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
@@ -255,7 +253,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeExample_echoProcess() {
-    this.wpsService = new WpsServiceTs('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('complexInput', 'text/xml',
       null, null, null,
       'test');
