@@ -35,7 +35,7 @@
     "timers": "^0.1.1",
     "tslib": "^2.0.0",
     "typings": "^2.1.1",
-    "wps-js-52-north": "^2.0.3",
+    "wps-js-52-north": "^2.0.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
