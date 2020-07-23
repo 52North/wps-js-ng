@@ -18,11 +18,8 @@ export class WpsExampleComponent implements OnInit {
   capabilitiesResponse: CapabilitiesResponse;
   selectedProcessIdentifier: string;
   private wpsService: WpsNgService;
-  processDescriptionResponse: ProcessDescriptionResponse;
   rightScreenTitle: string;
   rightScreenJsonContent: string;
-  jobIdResult: string;
-  jobIdStatus: any;
 
 
   ngOnInit(): void {

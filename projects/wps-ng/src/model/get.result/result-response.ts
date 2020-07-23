@@ -1,4 +1,3 @@
-import {ExecuteResponse} from '../execute.process/response/execute-response';
 import {ExecuteResponseObject} from '../execute.process/response/execute-response-object';
 
 export class ResultResponse {

@@ -23,16 +23,18 @@ export class StatusResultComponent implements OnInit {
 
   getStatus() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
-    this.wpsService.getStatus_WPS_2_0((response) => {
-      // this.updateRightScreenContents('Get Status Response', response);
+    this.wpsService.getStatus_WPS_2_0((response: StatusResponse) => {
+      console.log(response);
+      this.sendStatusResponse();
     }, this.jobIdStatus);
   }
 
   getResult() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
-    this.wpsService.getResult_WPS_2_0(response => {
+    this.wpsService.getResult_WPS_2_0((response: ResultResponse) => {
+      console.log(response);
+      this.sendResultResponse();
       this.resultResponse = response;
-      // this.updateRightScreenContents('Get Result Response', response);
     }, this.jobIdResult);
   }
 
