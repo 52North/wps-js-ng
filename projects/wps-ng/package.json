@@ -8,6 +8,6 @@
   "dependencies": {
     "tslib": "^2.0.0",
     "jquery": "^3.5.1",
-    "wps-js-52-north": "^2.0.4"
+    "wps-js-52-north": "^2.0.5"
   }
 }
