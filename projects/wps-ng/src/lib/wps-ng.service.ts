@@ -190,4 +190,24 @@ export class WpsNgService {
       callback(getResultResponse);
     }, jobId);
   }
+
+  /**
+   * Only important for WPS 1.0
+   *
+   * @callbackFunction a callback function that will be triggered with the
+   *                   parsed executeResponse as argument
+   * @storedExecuteResponseLocation the url, where the execute response
+   *                                document is located / can be retrieved
+   *                                from
+   */
+
+  parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => void, storedExecuteResponseLocation: string){
+    let executeResponse: ExecuteResponse;
+    this.wpsServiceJS.parseStoredExecuteResponse_WPS_1_0( (response: any) => {
+      executeResponse = new ExecuteResponse(response);
+      callback(executeResponse);
+    }, storedExecuteResponseLocation);
+  }
+
+
 }
