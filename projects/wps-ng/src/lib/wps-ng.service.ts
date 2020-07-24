@@ -78,6 +78,9 @@ export class WpsNgService {
   getCapabilitiesGET(callback: (response: CapabilitiesResponse) => void): void {
     let capabilitiesResponse: CapabilitiesResponse;
     this.wpsServiceJS.getCapabilities_GET((response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       capabilitiesResponse = new CapabilitiesResponse(response);
       callback(capabilitiesResponse);
     });
@@ -92,6 +95,9 @@ export class WpsNgService {
   getCapabilitiesPOST(callback: (capabilitiesResponse: CapabilitiesResponse) => void) {
     let capabilitiesResponse: CapabilitiesResponse;
     this.wpsServiceJS.getCapabilities_POST((response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       capabilitiesResponse = new CapabilitiesResponse(response);
       callback(capabilitiesResponse);
     });
@@ -107,6 +113,9 @@ export class WpsNgService {
   processDescriptionGet( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
     let processDescriptionResponse: ProcessDescriptionResponse;
     this.wpsServiceJS.describeProcess_GET( (response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       processDescriptionResponse = new ProcessDescriptionResponse(response);
       callback(processDescriptionResponse);
     }, processIdentifier);
@@ -122,6 +131,9 @@ export class WpsNgService {
   processDescriptionPost( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
     let processDescriptionResponse: ProcessDescriptionResponse;
     this.wpsServiceJS.describeProcess_POST( (response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       processDescriptionResponse = new ProcessDescriptionResponse(response);
       callback(processDescriptionResponse);
     }, processIdentifier);
@@ -169,6 +181,9 @@ export class WpsNgService {
   getStatus_WPS_2_0(callback: (StatusResponse) => void, jobId: string) {
     let getStatusResponse;
     this.wpsServiceJS.getStatus_WPS_2_0( (response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       getStatusResponse = new StatusResponse(response.executeResponse);
       callback(getStatusResponse);
     }, jobId);
@@ -186,6 +201,9 @@ export class WpsNgService {
   getResult_WPS_2_0(callback: (resultResponse: ResultResponse) => void, jobId: string) {
     let getResultResponse: ResultResponse;
     this.wpsServiceJS.getResult_WPS_2_0( (response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       getResultResponse = new ResultResponse(response);
       callback(getResultResponse);
     }, jobId);
@@ -204,6 +222,9 @@ export class WpsNgService {
   parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => void, storedExecuteResponseLocation: string){
     let executeResponse: ExecuteResponse;
     this.wpsServiceJS.parseStoredExecuteResponse_WPS_1_0( (response: any) => {
+      if (response.textStatus === 'error') {
+        throw new Error(response.errorThrown);
+      }
       executeResponse = new ExecuteResponse(response);
       callback(executeResponse);
     }, storedExecuteResponseLocation);

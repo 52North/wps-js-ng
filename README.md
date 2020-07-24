@@ -365,6 +365,16 @@ const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined
       undefined, undefined, undefined, undefined, undefined);
 ```
 
+##Contribute
+
+To update the library, make your edits in the [library folder](projects/wps-ng).
+Then run the following commands in order:
+* ng build wps-ng --prod
+* cd dist 
+* cd wps-ng
+* npm pack
+* npm publish
+* cd ../..
 
 
 License
@@ -385,3 +395,4 @@ To get help in running wps-js, please use the Geoprocessing community mailing li
 Please leave an issue on GitHub if you have any bug reports or feature requests: https://github.com/52North/wps-js/issues
 
 Contact: Benjamin Proß (b.pross@52north.org)
+
