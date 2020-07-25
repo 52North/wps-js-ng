@@ -15,6 +15,13 @@ import { CapabilitiesComponent } from './capabilities/capabilities.component';
 import { ProcessDescriptionComponent } from './process-description/process-description.component';
 import { ExecuteProcessComponent } from './execute-process/execute-process.component';
 import { StatusResultComponent } from './status-result/status-result.component';
+import { BBoxInputCardComponent } from './cards/b-box-input-card/b-box-input-card.component';
+import { ComplexInputCardComponent } from './cards/complex-input-card/complex-input-card.component';
+import { LiteralInputCardComponent } from './cards/literal-input-card/literal-input-card.component';
+import { BBoxOutputCardComponent } from './cards/b-box-output-card/b-box-output-card.component';
+import { LiteralOutputCardComponent } from './cards/literal-output-card/literal-output-card.component';
+import { ComplexOutputCardComponent } from './cards/complex-output-card/complex-output-card.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -25,7 +32,13 @@ import { StatusResultComponent } from './status-result/status-result.component';
     CapabilitiesComponent,
     ProcessDescriptionComponent,
     ExecuteProcessComponent,
-    StatusResultComponent
+    StatusResultComponent,
+    BBoxInputCardComponent,
+    ComplexInputCardComponent,
+    LiteralInputCardComponent,
+    BBoxOutputCardComponent,
+    LiteralOutputCardComponent,
+    ComplexOutputCardComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +47,8 @@ import { StatusResultComponent } from './status-result/status-result.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
