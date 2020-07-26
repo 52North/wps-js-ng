@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b-box-output-card.component.css']
 })
 export class BBoxOutputCardComponent implements OnInit {
+  title: any;
+  type: any;
+  transmissionModes: any[];
 
   constructor() { }
 

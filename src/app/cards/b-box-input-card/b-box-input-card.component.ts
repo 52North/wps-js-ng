@@ -9,10 +9,10 @@ export class BBoxInputCardComponent implements OnInit {
   title: string;
   input: any;
   type: string;
-  mimeTypeFormat: any;
+  selectedMimeTypeFormat: any;
   formatList: any[];
   selectedCoordinateReferenceSystem: any;
-  crsList: any;
+  crsList: any[];
 
   constructor() { }
 

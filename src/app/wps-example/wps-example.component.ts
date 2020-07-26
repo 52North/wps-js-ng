@@ -11,8 +11,8 @@ import {ProcessDescriptionResponse} from 'wps-ng';
 
 export class WpsExampleComponent implements OnInit {
   title: CapabilitiesResponse;
-  selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
-  selectedVersion = '1.0.0';
+  selectedURL = 'http://geoprocessing.demo.52north.org:8080/javaps/service';
+  selectedVersion = '2.0.0';
   urls: string[];
   versions: string[];
   capabilitiesResponse: CapabilitiesResponse;
@@ -25,12 +25,12 @@ export class WpsExampleComponent implements OnInit {
   ngOnInit(): void {
     this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
     this.urls = [
+      'http://geoprocessing.demo.52north.org:8080/javaps/service',
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',
       'http://zoo-project.org/cgi-bin/zoo_loader.cgi',
       'https://maps.dwd.de/geoserver/ows',
-      'https://riesgos.52north.org/wps/WebProcessingService',
-      'http://geoprocessing.demo.52north.org:8080/javaps/service'
+      'https://riesgos.52north.org/wps/WebProcessingService'
     ];
     this.versions = ['1.0.0', '2.0.0'];
     this.rightScreenTitle = 'Output appears here';

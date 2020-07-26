@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./complex-output-card.component.css']
 })
 export class ComplexOutputCardComponent implements OnInit {
+  title: any;
+  type: any;
+  transmissionModes: any[];
 
   constructor() { }
 
