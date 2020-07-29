@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CapabilitiesResponse, WpsNgService} from 'wps-ng';
-import {CapabilitiesDataService} from "../capabilities-data.service";
+import {CapabilitiesDataService} from '../capabilities-data.service';
 
 @Component({
   selector: 'app-capabilities',
