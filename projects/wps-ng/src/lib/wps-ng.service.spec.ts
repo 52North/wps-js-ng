@@ -1,16 +1,18 @@
-import { TestBed } from '@angular/core/testing';
 
 import { WpsNgService } from './wps-ng.service';
+import {WpsServiceModule} from './typings';
+
+let wpsService;
 
 describe('WpsNgService', () => {
-  let service: WpsNgService;
-
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(WpsNgService);
+    wpsService = {};
+
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('Should get capabilities object in the callback function', () => {
+    spyOn(wpsService, 'getCapabilitiesGET').and.returnValue(undefined);
+
   });
+
 });
