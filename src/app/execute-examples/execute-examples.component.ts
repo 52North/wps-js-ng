@@ -19,7 +19,9 @@ import {
   styleUrls: ['./execute-examples.component.css']
 })
 export class ExecuteExamplesComponent implements OnInit {
-  @Output() messageEvent  = new EventEmitter<any>();
+  @Output() executeResponseEvent  = new EventEmitter<any>();
+  @Output() executeRequestXMLEvent  = new EventEmitter<any>();
+
   urls: string[];
   versions: string[];
   selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
@@ -66,7 +68,7 @@ export class ExecuteExamplesComponent implements OnInit {
         try {
           console.log(response);
           this.response = response;
-          this.sendMessage();
+          this.sendResponseJson();
         } catch (e){
           console.error(e);
         }
@@ -102,7 +104,7 @@ export class ExecuteExamplesComponent implements OnInit {
         try {
           console.log(response);
           this.response = response;
-          this.sendMessage();
+          this.sendResponseJson();
         } catch (e){
           console.error(e);
         }
@@ -128,11 +130,14 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'sync', false, inputs, outputs);
+
 
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'sync', false, inputs, outputs);
   }
@@ -154,7 +159,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'async', false, inputs, outputs);
   }
@@ -176,7 +181,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'async', false, inputs, outputs);
   }
@@ -197,7 +202,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'r.resample', 'document',
       'async', false, inputs, outputs);
   }
@@ -220,7 +225,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'sync', false, inputs, outputs);
   }
@@ -247,7 +252,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.python.algorithm.QuakeMLProcessBBox', 'document',
       'sync', false, inputs, outputs);
   }
@@ -275,11 +280,14 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
       'sync', false, inputs, outputs);
   }
-  sendMessage(){
-    this.messageEvent.emit(this.response);
+  sendResponseJson(){
+    this.executeResponseEvent.emit(this.response);
+  }
+  sendRequestXml(){
+    this.executeRequestXMLEvent.emit(this.response);
   }
 }
