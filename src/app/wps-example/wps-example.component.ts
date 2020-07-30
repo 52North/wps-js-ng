@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ExecuteResponse, ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesResponse} from 'wps-ng';
 import {ProcessDescriptionResponse} from 'wps-ng';
+import {$e} from "codelyzer/angular/styles/chars";
 
 @Component({
   selector: 'app-wps-example',
@@ -60,5 +61,9 @@ export class WpsExampleComponent implements OnInit {
 
   receiveResultResponse($event: ResultResponse){
     this.updateRightScreenContents('Execute Process', $event);
+  }
+
+  executeRequestXml($event: string) {
+    console.log($event);
   }
 }

@@ -29,6 +29,7 @@ export class ExecuteExamplesComponent implements OnInit {
   rightScreenTitle: string;
   wpsService: WpsNgService;
   response: ExecuteResponse;
+  executeRequestXml: string;
 
   constructor() { }
 
@@ -130,9 +131,9 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
-    this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'sync', false, inputs, outputs);
-
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -155,6 +156,9 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -177,6 +181,9 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -198,6 +205,10 @@ export class ExecuteExamplesComponent implements OnInit {
     const complexOutput = new ComplexDataOutput('output', 'image/tiff',
       undefined, undefined, undefined, undefined, undefined, undefined);
     const outputs = [complexOutput];
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'r.resample', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -221,6 +232,10 @@ export class ExecuteExamplesComponent implements OnInit {
     const complexOutput = new ComplexDataOutput('result', 'application/x-zipped-shp',
       undefined, 'base64', undefined, undefined, undefined, undefined, undefined, undefined );
     const outputs = [complexOutput];
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -249,6 +264,10 @@ export class ExecuteExamplesComponent implements OnInit {
       undefined, 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.python.algorithm.QuakeMLProcessBBox', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
@@ -276,6 +295,9 @@ export class ExecuteExamplesComponent implements OnInit {
       undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [ complexOutput, literalOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
@@ -284,10 +306,12 @@ export class ExecuteExamplesComponent implements OnInit {
       }), 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
       'sync', false, inputs, outputs);
   }
+
   sendResponseJson(){
     this.executeResponseEvent.emit(this.response);
   }
-  sendRequestXml(){
-    this.executeRequestXMLEvent.emit(this.response);
+  sendRequestXml(request: string){
+    this.executeRequestXml = request;
+    this.executeRequestXMLEvent.emit(request);
   }
 }
