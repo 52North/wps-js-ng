@@ -11,7 +11,7 @@
     "publish_library": "ng build wps-ng --prod && cd dist && cd wps-ng && npm pack && npm publish && cd ../.."
   },
   "dependencies": {
-    "@angular/animations": "^10.0.3",
+    "@angular/animations": "^10.0.6",
     "@angular/cdk": "^10.0.2",
     "@angular/common": "^10.0.3",
     "@angular/compiler": "^10.0.3",
@@ -30,6 +30,7 @@
     "component": "^1.1.0",
     "jquery": "^3.5.1",
     "ngx-bootstrap": "^5.6.1",
+    "ngx-toastr": "^13.0.0",
     "popper.js": "^1.16.1",
     "rollup": "^2.21.0",
     "rxjs": "~6.5.4",

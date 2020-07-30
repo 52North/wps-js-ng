@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CapabilitiesResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesDataService} from '../capabilities-data.service';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-capabilities',
@@ -18,7 +19,7 @@ export class CapabilitiesComponent implements OnInit {
   @Output() messageEvent  = new EventEmitter<any>();
 
 
-  constructor(private capabilitiesDataService: CapabilitiesDataService) { }
+  constructor(private capabilitiesDataService: CapabilitiesDataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
@@ -51,4 +52,8 @@ export class CapabilitiesComponent implements OnInit {
     this.messageEvent.emit(this.capabilitiesResponse);
   }
 
+  showExampleError() {
+    this.toastr.success('Some Message', 'title');
+
+  }
 }

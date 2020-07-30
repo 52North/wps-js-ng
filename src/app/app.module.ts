@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { WpsExampleComponent } from './wps-example/wps-example.component';
 import {FormsModule} from '@angular/forms';
@@ -22,7 +21,8 @@ import { BBoxOutputCardComponent } from './cards/b-box-output-card/b-box-output-
 import { LiteralOutputCardComponent } from './cards/literal-output-card/literal-output-card.component';
 import { ComplexOutputCardComponent } from './cards/complex-output-card/complex-output-card.component';
 import {MatInputModule} from '@angular/material/input';
-import {XmlPipe} from "./xml-pipe";
+import {XmlPipe} from './xml-pipe';
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -50,7 +50,8 @@ import {XmlPipe} from "./xml-pipe";
     MatToolbarModule,
     MatSelectModule,
     FlexLayoutModule,
-    MatInputModule
+    MatInputModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
