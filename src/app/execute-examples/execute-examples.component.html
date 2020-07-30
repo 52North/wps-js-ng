@@ -82,9 +82,9 @@
       </form>
     </div>
 
-    <label for="executeRequestXml"> Execute Request Xml</label><textarea name="executeRequestXml" id="executeRequestXml" [(ngModel)]="executeRequestXml"></textarea>
-    <div class="jumbotron" >
-      <pre>{{ executeRequestXml | json }}</pre>
+    <label for="executeRequestXml"> Execute Request Xml</label>
+    <div id="executeRequestXml" class="jumbotron" >
+      <pre>{{ executeRequestXml | xml }}</pre>
     </div>
 
   </div>

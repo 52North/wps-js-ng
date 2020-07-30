@@ -21,7 +21,8 @@ import { LiteralInputCardComponent } from './cards/literal-input-card/literal-in
 import { BBoxOutputCardComponent } from './cards/b-box-output-card/b-box-output-card.component';
 import { LiteralOutputCardComponent } from './cards/literal-output-card/literal-output-card.component';
 import { ComplexOutputCardComponent } from './cards/complex-output-card/complex-output-card.component';
-import {MatInputModule} from "@angular/material/input";
+import {MatInputModule} from '@angular/material/input';
+import {XmlPipe} from "./xml-pipe";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatInputModule} from "@angular/material/input";
     LiteralInputCardComponent,
     BBoxOutputCardComponent,
     LiteralOutputCardComponent,
-    ComplexOutputCardComponent
+    ComplexOutputCardComponent,
+    XmlPipe
   ],
   imports: [
     BrowserModule,
