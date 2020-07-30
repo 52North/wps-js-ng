@@ -47,7 +47,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV1Sync() {
-    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
     const complexInput = new ComplexDataInput('data',
       'application/x-zipped-shp',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
@@ -64,6 +64,14 @@ export class ExecuteExamplesComponent implements OnInit {
 
     const dataOutputList = new Array<DataOutput>();
     dataOutputList.push(complexDataOutput);
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
+      'document',
+      'sync',
+      false,
+      dataInputList,
+      dataOutputList);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
@@ -100,6 +108,14 @@ export class ExecuteExamplesComponent implements OnInit {
 
     const dataOutputList = new Array<DataOutput>();
     dataOutputList.push(complexDataOutput);
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
+      'document',
+      'async',
+      false,
+      dataInputList,
+      dataOutputList);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
