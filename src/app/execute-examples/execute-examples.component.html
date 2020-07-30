@@ -82,8 +82,8 @@
       </form>
     </div>
 
-    <label for="executeRequestXml"> Execute Request Xml</label>
-    <div id="executeRequestXml" class="jumbotron" >
+    <label *ngIf="executeRequestXml !== undefined" for="executeRequestXml"> Execute Request Xml</label>
+    <div  *ngIf="executeRequestXml !== undefined" id="executeRequestXml" class="jumbotron" >
       <pre>{{ executeRequestXml | xml }}</pre>
     </div>
 

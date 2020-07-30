@@ -49,13 +49,17 @@ export class ExecuteExamplesComponent implements OnInit {
 
   executeV1Sync() {
     this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+
     const complexInput = new ComplexDataInput('data',
       'application/x-zipped-shp',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
+
+
     const literalInput = new LiteralDataInput('width', 'xs:double',
       null, '0.05');
     const dataInputList = new Array<DataInput>();
+
     dataInputList.push(complexInput);
     dataInputList.push(literalInput);
 
