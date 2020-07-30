@@ -22,10 +22,14 @@ export class ProcessDescriptionComponent implements OnInit {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);
     console.log(this.selectedUrl + this.selectedVersion + this.capabilitiesResponse);
     this.capabilitiesDataService.currentCapabilitiesResponse.subscribe( e => this.capabilitiesResponse = e);
+    this.capabilitiesDataService.selectedUrl.subscribe( e => this.selectedUrl = e);
+    this.capabilitiesDataService.selectedVersion.subscribe( e => this.selectedVersion = e);
+
   }
 
 
   processDescriptionGet() {
+    this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);
     this.wpsService.processDescriptionGet(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
       console.log(e);
       this.processDescriptionResponse = e;
@@ -34,6 +38,7 @@ export class ProcessDescriptionComponent implements OnInit {
   }
 
   processDescriptionPost(){
+    this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);
     this.wpsService.processDescriptionPost(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
       console.log(e);
       this.processDescriptionResponse = e;
