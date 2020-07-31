@@ -7,16 +7,20 @@
       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Process Description</a>
       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Execute</a>
       <a class="nav-item nav-link" id="nav-4-tab" data-toggle="tab" href="#nav-4" role="tab" aria-controls="nav-4" aria-selected="false">Status & Result</a>
-      <a class="nav-item nav-link" id="nav-5-tab" data-toggle="tab" href="#nav-5" role="tab" aria-controls="nav-4" aria-selected="false">Execute Process Examples</a>
+      <a class="nav-item nav-link" id="nav-5-tab" data-toggle="tab" href="#nav-5" role="tab" aria-controls="nav-6" aria-selected="false">Execute Examples</a>
+      <a class="nav-item nav-link" id="nav-6-tab" data-toggle="tab" href="#nav-6" role="tab" aria-controls="nav-6" aria-selected="false">Parse Stored XML</a>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
+
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
       <app-capabilities [urls]="urls" [versions]="versions" (messageEvent)="receiveCapabilitiesResponse($event)"></app-capabilities>
     </div>
+
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <app-process-description (messageEvent)="receiveProcessDescriptionResponse($event)" [capabilitiesResponse]="capabilitiesResponse" [selectedUrl]="selectedURL" [selectedVersion]="selectedVersion" [selectedProcessIdentifier]="selectedProcessIdentifier" ></app-process-description>
     </div>
+
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <app-execute-process></app-execute-process>
     </div>
@@ -27,6 +31,10 @@
 
     <div class="tab-pane fade" id="nav-5" role="tabpanel" aria-labelledby="nav-profile-tab">
       <app-execute-examples (executeResponseEvent)="receiveExecuteProcessResponse($event)" (executeRequestXMLEvent)="executeRequestXml($event)"></app-execute-examples>
+    </div>
+
+    <div class="tab-pane fade" id="nav-6" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <app-parse-stored-execute-response></app-parse-stored-execute-response>
     </div>
 
   </div>
