@@ -3,5 +3,6 @@
   "dest": "../../dist/wps-ng",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["tslib", "jquery", "wps-js-52-north"]
 }

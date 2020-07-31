@@ -1,89 +1,76 @@
-<h3>Execute Process</h3>
+
+  <div class="card card-body">
+    <div class="jumbotron">
+      <h3>Execute Process Examples</h3>
 
 
-<!--
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Execute V1 Sync">
-    </label>
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Sync">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Sync()">Test</button>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Execute V1 ASync">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeV1Async()">Test</button>
+      </form>
+
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Simple Buffer Algorithm">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_SimpleBufferAlgorithm()">Test</button>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Async">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Async()">Test</button>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Tiff Raw Data Response">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_TiffImage()">Test</button>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Execute Shape inline">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeInlineShape62_Inline()">Test</button>
+      </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Many Inputs">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_ManyInputs()">Test</button>
+      </form>
+    </div>
+
   </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeV1Sync()">Test</button>
-</form>
--->
 
 
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Sync">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Sync()">Test</button>
-</form>
-
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Execute V1 ASync">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeV1Async()">Test</button>
-</form>
 
 
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Simple Buffer Algorithm">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_SimpleBufferAlgorithm()">Test</button>
-</form>
-
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Async">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Async()">Test</button>
-</form>
-
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Tiff Raw Data Response">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_TiffImage()">Test</button>
-</form>
-
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Execute Shape inline">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeInlineShape62_Inline()">Test</button>
-</form>
-
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Many Inputs">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_ManyInputs()">Test</button>
-</form>
-
-<!--
-<form class="form-inline">
-  <div class="form-group mb-2">
-    <label>
-      <input type="text" readonly class="form-control-plaintext"  value="Echo Process">
-    </label>
-  </div>
-  <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_echoProcess()">Test</button>
-</form>
--->

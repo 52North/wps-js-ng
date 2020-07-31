@@ -1,11 +1,13 @@
 {
   "name": "wps-ng",
-  "version": "1.0.2",
+  "version": "1.0.12",
   "peerDependencies": {
     "@angular/common": "^10.0.2",
     "@angular/core": "^10.0.2"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "jquery": "^3.5.1",
+    "tslib": "^2.0.0",
+    "wps-js-52-north": "^2.0.51"
   }
 }

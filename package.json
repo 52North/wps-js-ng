@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "publish_library": "ng build wps-ng --prod && cd dist && cd wps-ng && npm pack && npm publish && cd ../.."
   },
   "dependencies": {
     "@angular/animations": "^10.0.3",
@@ -35,7 +36,7 @@
     "timers": "^0.1.1",
     "tslib": "^2.0.0",
     "typings": "^2.1.1",
-    "wps-js-52-north": "^2.0.3",
+    "wps-js-52-north": "^2.0.52",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

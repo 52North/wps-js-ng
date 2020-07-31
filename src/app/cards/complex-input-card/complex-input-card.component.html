@@ -1,0 +1,22 @@
+<div class="card w-100">
+  <div class="card-body">
+    <h5 class="card-header">Complex Input</h5>
+    <h4 class="card-title"> {{title}}</h4>
+    <h5 class="label">Input: {{input}}</h5>
+    <h5 class="label">Type: {{type}}</h5>
+    <label> Select MimeType/Schema/Encoding </label>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Format</mat-label>
+      <mat-select [(ngModel)]="mimeTypeFormat">
+        <mat-option *ngFor="let format of formatList" [value]="format">
+          {{format}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <pre></pre>
+
+    <label for="payload">Complex Payload</label>
+    <pre></pre>
+    <textarea name="payload" id="payload" [(ngModel)]="complexPayload"></textarea>
+  </div>
+</div>

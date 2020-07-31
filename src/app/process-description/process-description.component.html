@@ -1,0 +1,15 @@
+<h3>Process Description:</h3>
+<form wps-example-form="ngForm">
+  <div *ngIf="capabilitiesResponse">
+    <label for="capabilities">Capabilities List:</label>
+    <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities" id="capabilities"  ngModel>
+      <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
+    </select>
+    <button (click)="processDescriptionGet()">Process Details Get</button>
+    <button (click)="processDescriptionPost()">Process Details Post</button>
+  </div>
+  <div *ngIf="!capabilitiesResponse">
+    <h3>Process Description:</h3>
+    <h5>Fetch Capabilities to get the list of process available.</h5>
+  </div>
+</form>

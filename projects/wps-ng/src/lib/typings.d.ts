@@ -1,4 +1,10 @@
 // tslint:disable-next-line:no-namespace
+
+import {StatusResponse} from '../model/get.status/status-response';
+import {ResultResponse} from '../model/get.result/result-response';
+import {ExecuteResponse} from '../model/execute.process/response/execute-response';
+
+// tslint:disable-next-line:no-namespace
 declare namespace WpsServiceModule {
 
   export interface Service {
@@ -101,7 +107,7 @@ declare namespace WpsServiceModule {
      *                   parsed StatusInfo document as argument
      * @jobId the ID of the asynchronously executed job
      */
-    getStatus_WPS_2_0(callback: (response) => any, jobId: string);
+    getStatus_WPS_2_0(callback: (response) => StatusResponse, jobId: string);
 
     /**
      * WPS 2.0 getStatus operation to retrieve the status of an executed job
@@ -112,7 +118,19 @@ declare namespace WpsServiceModule {
      *                   parsed StatusInfo document as argument
      * @jobId the ID of the asynchronously executed job
      */
-    getResult_WPS_2_0(callback: (response) => any, jobId: string);
+    getResult_WPS_2_0(callback: (response) => ResultResponse, jobId: string);
+
+    /**
+     * WPS 2.0 getStatus operation to retrieve the status of an executed job
+     *
+     * Not usable with WPS 1.0
+     *
+     * @callbackFunction a callback function that will be triggered with the
+     *                   parsed StatusInfo document as argument
+     * @jobId the ID of the asynchronously executed job
+     */
+    // tslint:disable-next-line:adjacent-overload-signatures
+    parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => any, jobId: string);
 
   }
 }

@@ -15,7 +15,7 @@ export class ProcessOffering {
       this._process = new ProcessDetails(processOfferingResponse.process);
       this._processVersion = processOfferingResponse.processVersion;
       this._jobControlOptions = new Array<string>();
-      processOfferingResponse.jobControlOptions?.forEach(e => { // TODO: Enquire if this the only possible values are these 2
+      processOfferingResponse.jobControlOptions?.forEach(e => {
         this._jobControlOptions.push(e);
       });
       this._outputTransmissionModes = new Array<string>();

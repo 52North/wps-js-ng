@@ -31,7 +31,7 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/wps-js-52-north/src/web/js/wps-js-all.js"
+              "node_modules/wps-js-52-north/src/web/lib/wps-js-all.js"
             ]
           },
           "configurations": {

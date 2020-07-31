@@ -1,0 +1,27 @@
+<h3>Capabilities</h3>
+<form wps-example-form="ngForm">
+  <div class="form-group">
+    <label for="version">Version</label>
+    <select class="form-control" [(ngModel)]="selectedVersion" id="version" name="version" ngModel required>
+      <option *ngFor="let version of versions" [value]="version" selected="selected">{{version}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="url">URL</label>
+    <select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
+      <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
+    </select>
+  </div>
+  <button (click)="getCapabilitiesGET()" >Capabilities Get</button>
+  <button (click)="getCapabilitiesPOST()">Capabilities Post</button>
+
+  <div *ngIf="capabilitiesResponse">
+    <label>Capabilities List:</label>
+    <label>
+      <select class="form-control" [(ngModel)]="selectedProcessIdentifier" name="capabilities"  ngModel>
+        <option *ngFor="let capability of capabilitiesResponse.capabilities.processes" [value]="capability.identifier" >{{capability.title}}</option>
+      </select>
+    </label>
+  </div>
+
+</form>
