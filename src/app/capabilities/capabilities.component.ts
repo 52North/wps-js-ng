@@ -54,6 +54,5 @@ export class CapabilitiesComponent implements OnInit {
 
   showExampleError() {
     this.toastr.error('Some Message', 'title');
-
   }
 }
