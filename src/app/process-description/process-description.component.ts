@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CapabilitiesResponse, ProcessDescriptionResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesDataService} from '../capabilities-data.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-process-description',
@@ -16,7 +17,7 @@ export class ProcessDescriptionComponent implements OnInit {
   private processDescriptionResponse: ProcessDescriptionResponse;
   @Output() messageEvent  = new EventEmitter<any>();
 
-  constructor(private capabilitiesDataService: CapabilitiesDataService) { }
+  constructor(private capabilitiesDataService: CapabilitiesDataService,  private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);

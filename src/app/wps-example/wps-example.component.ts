@@ -55,11 +55,11 @@ export class WpsExampleComponent implements OnInit {
   }
 
   receiveStatusResponse($event: StatusResponse){
-    this.updateRightScreenContents('Execute Process', $event);
+    this.updateRightScreenContents('Get Process Status', $event);
   }
 
   receiveResultResponse($event: ResultResponse){
-    this.updateRightScreenContents('Execute Process', $event);
+    this.updateRightScreenContents('Get Process Result', $event);
   }
 
   executeRequestXml($event: string) {

@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CapabilitiesResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesDataService} from '../capabilities-data.service';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-capabilities',
@@ -53,7 +53,7 @@ export class CapabilitiesComponent implements OnInit {
   }
 
   showExampleError() {
-    this.toastr.success('Some Message', 'title');
+    this.toastr.error('Some Message', 'title');
 
   }
 }

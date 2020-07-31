@@ -10,21 +10,30 @@ export class StatusResultComponent implements OnInit {
   jobIdStatus: string;
   jobIdResult: string;
   private wpsService: WpsNgService;
-  private selectedURL: string;
+  selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
   @Output() statusEvent  = new EventEmitter<StatusResponse>();
   @Output() resultEvent  = new EventEmitter<ResultResponse>();
   private resultResponse: ResultResponse;
   private statusResponse: StatusResponse;
+  urls: string[];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.urls = [
+      'http://geoprocessing.demo.52north.org:8080/javaps/service',
+      'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
+      'https://ows.terrestris.de/deegree-wps/services',
+      'http://zoo-project.org/cgi-bin/zoo_loader.cgi',
+      'https://maps.dwd.de/geoserver/ows',
+      'https://riesgos.52north.org/wps/WebProcessingService'
+    ];
   }
 
   getStatus() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
     this.wpsService.getStatus_WPS_2_0((response: StatusResponse) => {
-      console.log(response);
+      this.statusResponse = response;
       this.sendStatusResponse();
     }, this.jobIdStatus);
   }
@@ -32,9 +41,8 @@ export class StatusResultComponent implements OnInit {
   getResult() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
     this.wpsService.getResult_WPS_2_0((response: ResultResponse) => {
-      console.log(response);
-      this.sendResultResponse();
       this.resultResponse = response;
+      this.sendResultResponse();
     }, this.jobIdResult);
   }
 

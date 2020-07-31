@@ -51,7 +51,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
 
     const complexInput = new ComplexDataInput('data',
-      'application/x-zipped-shp',
+      'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
 
