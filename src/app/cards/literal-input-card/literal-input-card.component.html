@@ -1,4 +1,4 @@
-<div class="card w-100">
+<div class="card w-75">
   <div class="card-body">
     <h5 class="card-header">Literal Input</h5>
     <h4 class="card-title"> {{title}}</h4>
@@ -6,7 +6,9 @@
     <h5 class="label">Type: {{type}}</h5>
 
     <label> Value </label>
-    <input [(ngModel)]="literalValue" >
+    <label>
+      <input [(ngModel)]="literalValue" >
+    </label>
 
   </div>
 </div>

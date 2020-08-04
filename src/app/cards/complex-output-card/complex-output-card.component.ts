@@ -9,6 +9,7 @@ export class ComplexOutputCardComponent implements OnInit {
   title: any;
   type: any;
   transmissionModes: any[];
+  selectedTransmissionMode: string;
 
   constructor() { }
 

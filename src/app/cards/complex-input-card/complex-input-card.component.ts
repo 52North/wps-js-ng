@@ -12,6 +12,7 @@ export class ComplexInputCardComponent implements OnInit {
   mimeTypeFormat: string;
   formatList: any[];
   complexPayload: string;
+  selectedMimeTypeFormat: any;
 
   constructor() { }
 

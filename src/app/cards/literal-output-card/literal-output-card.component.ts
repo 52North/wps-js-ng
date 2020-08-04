@@ -10,6 +10,7 @@ export class LiteralOutputCardComponent implements OnInit {
   type: string;
   literalValue: any;
   transmissionModes: any[];
+  selectedTransmissionMode: string;
 
   constructor() { }
 

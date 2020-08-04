@@ -9,6 +9,7 @@ export class BBoxOutputCardComponent implements OnInit {
   title: any;
   type: any;
   transmissionModes: any[];
+  selectedTransmissionMode: string;
 
   constructor() { }
 

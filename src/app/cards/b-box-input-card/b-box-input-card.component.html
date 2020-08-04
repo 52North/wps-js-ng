@@ -1,29 +1,19 @@
-<div class="card w-100">
+<div class="card w-75">
   <div class="card-body">
     <h5 class="card-header">Bounding Box Input</h5>
     <h3 class="card-title">{{title}}</h3>
     <h4 class="label">Input: {{input}}</h4>
     <h4 class="label">Type: {{type}}</h4>
 
-    <label> Select MimeType/Schema/Encoding </label>
-    <mat-form-field appearance="fill">
-      <mat-label>Select Format</mat-label>
-      <mat-select [(ngModel)]="selectedMimeTypeFormat">
-        <mat-option *ngFor="let format of formatList" [value]="format">
-          {{format}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <pre></pre>
+    <label  for="selectedMimeTypeFormat">Select MimeType/Schema/Encoding</label>
+    <select class="form-control" [(ngModel)]="selectedMimeTypeFormat" name="selectedMimeTypeFormat" id="selectedMimeTypeFormat" ngModel required>
+      <option *ngFor="let format of formatList" [value]="format" >{{format}}</option>
+    </select>
 
-    <label>Select Coordinate Reference System</label>
-    <mat-form-field appearance="fill">
-      <mat-label>Select CRS</mat-label>
-      <mat-select [(ngModel)]="selectedCoordinateReferenceSystem" >
-        <mat-option *ngFor="let format of crsList" [value]="format">
-          {{format}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <label for="selectedCoordinateReferenceSystem">Select Coordinate Reference System</label>
+    <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystem" name="selectedCoordinateReferenceSystem" id="selectedCoordinateReferenceSystem" ngModel required>
+      <option *ngFor="let crs of crsList" [value]="crs" >{{crs}}</option>
+    </select>
+
   </div>
 </div>
