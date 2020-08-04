@@ -6,11 +6,11 @@ export class ExecuteResponseDocument {
   // Property only for Version 2
   private readonly _jobId: string;
   // Property only for Async call
-  private readonly _statusLocation: string;
   private readonly _expirationDate: string;
-
   private readonly _service: string;
   private readonly _version: string;
+  private readonly _lang: string;
+  private readonly _statusLocation: string;
   private readonly _serviceInstance: string;
   private readonly _process: Process;
   private readonly _status: Status;
@@ -20,6 +20,7 @@ export class ExecuteResponseDocument {
     if (executeResponseDocumentJson != null){
       this._service = executeResponseDocumentJson.service;
       this._version = executeResponseDocumentJson.version;
+      this._lang = executeResponseDocumentJson.lang;
       this._statusLocation = executeResponseDocumentJson.statusLocation;
       this._serviceInstance = executeResponseDocumentJson.serviceInstance;
       this._process = new Process(executeResponseDocumentJson.process);
@@ -31,6 +32,15 @@ export class ExecuteResponseDocument {
       this._jobId = executeResponseDocumentJson.jobId;
       this._expirationDate = executeResponseDocumentJson.expirationDate;
     }
+  }
+
+
+  get expirationDate(): string {
+    return this._expirationDate;
+  }
+
+  get lang(): string {
+    return this._lang;
   }
 
   get service(): string {

@@ -1,0 +1,12 @@
+<div class="input-group mb-3">
+  <input  [(ngModel)]="jobIdStatus" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon1">
+  <div class="input-group-append">
+    <button  (click)="getStatus()" class="btn btn-outline-secondary" type="button" id="button-addon1">Get Status</button>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <input [(ngModel)]="jobIdResult" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button (click)="getResult()" class="btn btn-outline-secondary" type="button" id="button-addon2">Get Result</button>
+  </div>
+</div>
