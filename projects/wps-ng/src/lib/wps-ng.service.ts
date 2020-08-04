@@ -230,5 +230,10 @@ export class WpsNgService {
     }, storedExecuteResponseLocation);
   }
 
+  getXmlRequestExecuteProcess(processIdentifier: string, responseFormat: string, executionMode: string,
+                              lineage: boolean, inputs: Array<DataInput>, outputs: Array<DataOutput>): string {
+    return this.wpsServiceJS.getXmlRequestExecuteProcess( processIdentifier, responseFormat,
+      executionMode, lineage, inputs, outputs);
+  }
 
 }

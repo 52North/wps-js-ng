@@ -43,6 +43,11 @@ export class ComplexDataOutput implements  DataOutput {
     this.title = title;
     this.abstractValue = abstractValue;
     this.value = value;
-    this.transmission = transmission;
+    if (transmission === undefined) {
+      this.transmission = 'value';
+    }
+    else {
+      this.transmission = transmission;
+    }
   }
 }

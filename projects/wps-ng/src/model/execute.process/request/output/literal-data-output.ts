@@ -11,10 +11,11 @@ export class LiteralDataOutput implements DataOutput{
   readonly dataType: string;
   readonly uom: string;
   readonly value: any;
+  readonly transmission: string;
 
 
   constructor(identifier: string, mimeType: string, schema: string, encoding: string, asReference: boolean = false,
-              abstractValue: any, dataType: string, uom: string, value: string) {
+              abstractValue: any, dataType: string, uom: string, value: string, transmission?: string) {
     this.type = 'literal';
     this.identifier = identifier;
     this.mimeType = mimeType;
@@ -25,5 +26,11 @@ export class LiteralDataOutput implements DataOutput{
     this.dataType = dataType;
     this.uom = uom;
     this.value = value;
+    if (transmission === undefined) {
+      this.transmission = 'value';
+    }
+    else {
+      this.transmission = transmission;
+    }
   }
 }
