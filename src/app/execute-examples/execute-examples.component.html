@@ -80,6 +80,17 @@
         </div>
         <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_ManyInputs()">Test</button>
       </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Echo Process">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_echoProcess()">Test</button>
+      </form>
+
+
     </div>
 
     <label *ngIf="executeRequestXml !== undefined" for="executeRequestXml"> Execute Request Xml</label>

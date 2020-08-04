@@ -1,6 +1,16 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
+import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
+import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
+import {LiteralDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/literal-data-input';
+import {DataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/data-input';
+import {ComplexDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/complex-data-output';
+import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/data-output';
+import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
+import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
+import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
 
-import {
+/*import {
   BBoxDataInput, BBoxDataOutput,
   ComplexDataInput,
   ComplexDataOutput,
@@ -10,7 +20,7 @@ import {
   LiteralDataInput,
   LiteralDataOutput,
   WpsNgService
-} from 'wps-ng';
+} from 'wps-ng';*/
 
 
 
@@ -298,25 +308,28 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeExample_echoProcess() {
-    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
-    const complexInput = new ComplexDataInput('complexInput', 'text/xml',
-      null, null, null,
-      'test');
-    const literalInput = new LiteralDataInput('literalInput', null,
-      null, '0.05');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
+
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
-    const inputs = [complexInput, literalInput];
+    // const literalInput1 = new LiteralDataInput('duration', null, null, '0.05');
+    const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
+    const complexInput = new ComplexDataInput('complexInput', 'text/xml',
+      null, null, null,
+      '<test><test2>hello</test2></test>');
+
+    const inputs = [complexInput, literalInput, boundingBoxInput ];
 
     const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
-      undefined, undefined, undefined, undefined, 'test');
-    const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
-    const complexOutput = new ComplexDataOutput('complexOutput', undefined, undefined, undefined,
+    const bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
+      undefined, 'EPSG:4326', undefined, undefined, undefined);
+    const complexOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined, 'value');
-    const outputs = [ complexOutput, literalOutput];
 
-    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
+    const outputs = [ literalOutput, bboxOutput, complexOutput];
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, inputs, outputs);
     this.sendRequestXml(xmlRequestExecuteProcess);
 
@@ -324,7 +337,7 @@ export class ExecuteExamplesComponent implements OnInit {
         console.log(response);
         this.response = response;
         this.sendResponseJson();
-      }), 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
+      }), 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, inputs, outputs);
   }
 

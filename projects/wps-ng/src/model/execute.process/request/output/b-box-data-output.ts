@@ -10,10 +10,11 @@ export class BBoxDataOutput implements DataOutput{
   readonly dimensions: string;
   readonly lowerCorner: string;
   readonly upperCorner: string;
+  readonly transmission: string;
 
 
   constructor(identifier: string, mimeType: string, schema: string, encoding: string, crs: string,
-              dimensions: string, lowerCorner: string, upperCorner: string) {
+              dimensions: string, lowerCorner: string, upperCorner: string, transmission?: string  ) {
     this.type = 'bbox';
     this.identifier = identifier;
     this.mimeType = mimeType;
@@ -23,6 +24,12 @@ export class BBoxDataOutput implements DataOutput{
     this.dimensions = dimensions;
     this.lowerCorner = lowerCorner;
     this.upperCorner = upperCorner;
+    if (transmission === undefined) {
+      this.transmission = 'value';
+    }
+    else {
+      this.transmission = transmission;
+    }
   }
 
 }
