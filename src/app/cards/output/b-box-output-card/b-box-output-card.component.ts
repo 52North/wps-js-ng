@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-b-box-output-card',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b-box-output-card.component.css']
 })
 export class BBoxOutputCardComponent implements OnInit {
-  title: any;
-  type: any;
-  transmissionModes: any[];
-  selectedTransmissionMode: string;
+  @Input() title: string;
+  @Input() type: string;
+  @Input() transmissionModes: string[];
+
+  @Output() selectedTransmissionMode: string;
 
   constructor() { }
 

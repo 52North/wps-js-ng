@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-b-box-input-card',
@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b-box-input-card.component.css']
 })
 export class BBoxInputCardComponent implements OnInit {
-  title: string;
-  input: any;
-  type: string;
-  selectedMimeTypeFormat: any;
-  formatList: any[];
-  selectedCoordinateReferenceSystem: any;
-  crsList: any[];
+
+  @Input() title: string;
+  @Input() input: string;
+  @Input() type: string;
+  @Input() formatList: string[];
+  @Input() crsList: string[];
+
+  @Output() selectedMimeTypeFormat: string;
+  @Output() selectedCoordinateReferenceSystem: string;
 
   constructor() { }
 

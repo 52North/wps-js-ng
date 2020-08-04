@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-complex-output-card',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./complex-output-card.component.css']
 })
 export class ComplexOutputCardComponent implements OnInit {
-  title: any;
-  type: any;
-  transmissionModes: any[];
-  selectedTransmissionMode: string;
+  @Input() title: any;
+  @Input() type: any;
+  @Input() transmissionModes: any[];
+
+  @Output() selectedTransmissionMode: string;
 
   constructor() { }
 

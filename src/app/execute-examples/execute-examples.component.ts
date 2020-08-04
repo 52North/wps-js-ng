@@ -1,4 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+/*
 import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
 import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
 import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
@@ -9,8 +10,9 @@ import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/req
 import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
 import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
 import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
+*/
 
-/*import {
+import {
   BBoxDataInput, BBoxDataOutput,
   ComplexDataInput,
   ComplexDataOutput,
@@ -20,7 +22,7 @@ import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/
   LiteralDataInput,
   LiteralDataOutput,
   WpsNgService
-} from 'wps-ng';*/
+} from 'wps-ng';
 
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-literal-input-card',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./literal-input-card.component.css']
 })
 export class LiteralInputCardComponent implements OnInit {
-  title: string;
-  input: string;
-  type: string;
-  literalValue: any;
+  @Input() title: string;
+  @Input() input: string;
+  @Input() type: string;
+
+  @Output() literalValue: number;
 
   constructor() { }
 

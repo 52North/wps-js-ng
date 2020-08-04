@@ -14,6 +14,16 @@
     <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystem" name="selectedCoordinateReferenceSystem" id="selectedCoordinateReferenceSystem" ngModel required>
       <option *ngFor="let crs of crsList" [value]="crs" >{{crs}}</option>
     </select>
+    <pre></pre>
+
+    <label> Lower Left Corner
+      <input matInput placeholder="Example definition of the lower left corner">
+    </label>
+    <pre></pre>
+    <label> Upper Right Corner
+      <input matInput placeholder="Example definition of the upper right corner">
+    </label>
+
 
   </div>
 </div>

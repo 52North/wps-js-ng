@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-literal-output-card',
@@ -6,11 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./literal-output-card.component.css']
 })
 export class LiteralOutputCardComponent implements OnInit {
-  title: string;
-  type: string;
-  literalValue: any;
-  transmissionModes: any[];
-  selectedTransmissionMode: string;
+
+  @Input() title: string;
+  @Input() type: string;
+  @Input() transmissionModes: any[];
+
+  @Output() selectedTransmissionMode: string;
+  @Output() literalValue: any;
 
   constructor() { }
 

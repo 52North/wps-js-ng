@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-complex-input-card',
@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./complex-input-card.component.css']
 })
 export class ComplexInputCardComponent implements OnInit {
-  title: string;
-  input: string;
-  type: string;
-  mimeTypeFormat: string;
-  formatList: any[];
-  complexPayload: string;
-  selectedMimeTypeFormat: any;
+  @Input() title: string;
+  @Input() input: string;
+  @Input() type: string;
+  @Input() formatList: string[];
+
+  @Output() selectedMimeTypeFormat: string;
+  @Output() complexPayload: string;
 
   constructor() { }
 
