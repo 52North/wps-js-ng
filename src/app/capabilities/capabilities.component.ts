@@ -1,10 +1,8 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CapabilitiesResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesDataService} from '../capabilities-data.service';
-<<<<<<< HEAD
-=======
+
 import {ToastrService} from 'ngx-toastr';
->>>>>>> 4238f6d9189d349c3cf7c1bca567fe08a6f71b4e
 
 @Component({
   selector: 'app-capabilities',
