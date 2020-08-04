@@ -29,25 +29,22 @@ import {
   styleUrls: ['./execute-process.component.css']
 })
 export class ExecuteProcessComponent implements OnInit {
-  private wpsService: WpsNgService;
+   wpsService: WpsNgService;
 
-  private complexDataInputs: ComplexDataInput[];
-  private complexDataOutputs: ComplexDataOutput[];
-  private literalDataInputs: LiteralDataInput[];
-  private literalDataOutputs: LiteralDataOutput[];
-  private bBoxDataInputs: BBoxDataInput[];
-  private bBoxDataOutputs: BBoxDataOutput[];
+   complexDataInputs: ComplexDataInput[];
+   complexDataOutputs: ComplexDataOutput[];
+   literalDataInputs: LiteralDataInput[];
+   literalDataOutputs: LiteralDataOutput[];
+   bBoxDataInputs: BBoxDataInput[];
+   bBoxDataOutputs: BBoxDataOutput[];
 
-  private response: ExecuteResponse;
-  private processDescriptionResponse: ProcessDescriptionResponse;
-
-
-
+   response: ExecuteResponse;
+  processDescriptionResponse: ProcessDescriptionResponse;
   constructor() { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
-    this.wpsService.processDescriptionGet('', (response: ProcessDescriptionResponse) => {
+    this.wpsService.processDescriptionGet('org.n52.javaps.test.EchoProcess', (response: ProcessDescriptionResponse) => {
       this.processDescriptionResponse = response;
     } );
   }
@@ -94,7 +91,7 @@ export class ExecuteProcessComponent implements OnInit {
 
   }
 
-  private sendRequestXml(xmlRequestExecuteProcess: string) {
+   sendRequestXml(xmlRequestExecuteProcess: string) {
 
   }
 }
