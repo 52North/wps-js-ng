@@ -312,13 +312,13 @@ export class ExecuteExamplesComponent implements OnInit {
 
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
-    // const literalInput1 = new LiteralDataInput('duration', null, null, '0.05');
+    const literalInput1 = new LiteralDataInput('duration', null, null, '1010');
     const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
     const complexInput = new ComplexDataInput('complexInput', 'text/xml',
       null, null, null,
       '<test><test2>hello</test2></test>');
 
-    const inputs = [complexInput, literalInput, boundingBoxInput ];
+    const inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
 
     const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
