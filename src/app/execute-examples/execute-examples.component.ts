@@ -83,7 +83,7 @@ export class ExecuteExamplesComponent implements OnInit {
     dataOutputList.push(complexDataOutput);
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
-      'document',
+      'raw',
       'sync',
       false,
       dataInputList,
@@ -102,7 +102,7 @@ export class ExecuteExamplesComponent implements OnInit {
       'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
       'document',
       'sync',
-      false,
+      true,
       dataInputList,
       dataOutputList);
   }

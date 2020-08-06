@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExecuteExamplesComponent } from './execute-examples.component';
+import { ComplexInputCardComponent } from './complex-input-card.component';
 
-describe('ExecuteExamplesComponent', () => {
-  let component: ExecuteExamplesComponent;
-  let fixture: ComponentFixture<ExecuteExamplesComponent>;
+describe('ComplexInputCardComponent', () => {
+  let component: ComplexInputCardComponent;
+  let fixture: ComponentFixture<ComplexInputCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExecuteExamplesComponent ]
+      declarations: [ ComplexInputCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ExecuteExamplesComponent);
+    fixture = TestBed.createComponent(ComplexInputCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

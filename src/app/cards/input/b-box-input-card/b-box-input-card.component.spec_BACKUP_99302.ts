@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProcessDescriptionComponent } from './process-description.component';
+import { BBoxInputCardComponent } from './b-box-input-card.component';
 
-describe('ProcessDescriptionComponent', () => {
-  let component: ProcessDescriptionComponent;
-  let fixture: ComponentFixture<ProcessDescriptionComponent>;
+describe('BBoxInputCardComponent', () => {
+  let component: BBoxInputCardComponent;
+  let fixture: ComponentFixture<BBoxInputCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessDescriptionComponent ]
+      declarations: [ BBoxInputCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProcessDescriptionComponent);
+    fixture = TestBed.createComponent(BBoxInputCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

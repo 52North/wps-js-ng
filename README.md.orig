@@ -221,6 +221,8 @@ For [DataOutput](projects/wps-ng/src/model/execute.process/request/output/data-o
 * [LiteralDataOutput](projects/wps-ng/src/model/execute.process/request/output/literal-data-output.ts)
 * [BBoxDataOutput](projects/wps-ng/src/model/execute.process/request/output/b-box-data-output.ts)
 
+<<<<<<< .merge_file_iEyxqs
+=======
 #### Retrieve Stored ExecuteResponse (WPS 1.0.0)
 For WPS 1.0.0 execute operation you may define to execute it asynchronously and store a status document on the server, which is updated by the WPS. With the following method you can retrieve the response document of type [ExecuteResponse](projects/wps-ng/src/model/execute.process/response/execute-response.ts).
 ```ts
@@ -228,6 +230,7 @@ For WPS 1.0.0 execute operation you may define to execute it asynchronously and 
       console.log(response);
     } , this.form.value.url);
 ```
+>>>>>>> .merge_file_araYhr
 
 #### Type Definitions
 Click on the objects below for more on Type Details
