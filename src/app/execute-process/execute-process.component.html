@@ -4,13 +4,25 @@
   <h3>Input</h3>
   <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
                         [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
-                        [crsList]=""
-  ></app-b-box-input-card>
+                        [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
+                        [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
   <pre></pre>
-  <app-complex-input-card></app-complex-input-card>
+
+  <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
+                          [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
+                          [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
+  ></app-literal-input-card>
   <pre></pre>
-  <app-literal-input-card></app-literal-input-card>
+
+  <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
+                          [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
+                          [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
+  ></app-literal-input-card>
   <pre></pre>
+
+  <app-complex-input-card ></app-complex-input-card>
+  <pre></pre>
+
   <app-literal-input-card></app-literal-input-card>
 
   <h3>Output</h3>

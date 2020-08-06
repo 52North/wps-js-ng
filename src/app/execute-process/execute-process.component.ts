@@ -37,9 +37,9 @@ export class ExecuteProcessComponent implements OnInit {
    literalDataOutputs: LiteralDataOutput[];
    bBoxDataInputs: BBoxDataInput[];
    bBoxDataOutputs: BBoxDataOutput[];
-
    response: ExecuteResponse;
-  processDescriptionResponse: ProcessDescriptionResponse;
+   processDescriptionResponse: ProcessDescriptionResponse;
+
   constructor() { }
 
   ngOnInit(): void {

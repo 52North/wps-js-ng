@@ -7,7 +7,7 @@
 
     <label  for="selectedMimeTypeFormat">Select MimeType/Schema/Encoding</label>
     <select class="form-control" [(ngModel)]="selectedMimeTypeFormat" name="selectedMimeTypeFormat" id="selectedMimeTypeFormat" ngModel required>
-      <option *ngFor="let format of formatList" [value]="format" >{{format}}</option>
+      <option *ngFor="let format of formatList" [value]="format" >{{format | json}}</option>
     </select>
 
     <label for="selectedCoordinateReferenceSystem">Select Coordinate Reference System</label>

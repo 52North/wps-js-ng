@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
+import {Format} from 'wps-ng';
 
 @Component({
   selector: 'app-b-box-input-card',
@@ -10,7 +11,7 @@ export class BBoxInputCardComponent implements OnInit {
   @Input() title: string;
   @Input() input: string;
   type = 'B-Box Input';
-  @Input() formatList: string[];
+  @Input() formatList: Format[];
   @Input() crsList: string[];
 
   @Output() selectedMimeTypeFormat: string;
