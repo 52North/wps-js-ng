@@ -3,8 +3,9 @@
 <div *ngIf="processDescriptionResponse !== undefined">
   <h3>Input</h3>
   <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
-                        [input]=""
-                        [type]=""  ></app-b-box-input-card>
+                        [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
+                        [crsList]=""
+  ></app-b-box-input-card>
   <pre></pre>
   <app-complex-input-card></app-complex-input-card>
   <pre></pre>

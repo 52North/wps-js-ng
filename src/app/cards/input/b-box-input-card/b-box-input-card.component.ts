@@ -9,7 +9,7 @@ export class BBoxInputCardComponent implements OnInit {
 
   @Input() title: string;
   @Input() input: string;
-  @Input() type: string;
+  type = 'B-Box Input';
   @Input() formatList: string[];
   @Input() crsList: string[];
 
