@@ -38,6 +38,7 @@
     "tslib": "^2.0.0",
     "typings": "^2.1.1",
     "vkbeautify": "^0.99.3",
+
     "wps-ng": "^1.0.12",
     "wps-js-52-north": "^2.0.52",
     "zone.js": "~0.10.2"
