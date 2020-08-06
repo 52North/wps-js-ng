@@ -54,4 +54,13 @@ export class Input {
   get literalData(): LiteralData {
     return this._literalData;
   }
+
+  get complexData(): ComplexData {
+    return this._complexData;
+  }
+
+  get bboxData(): BBoxData {
+    return this._bboxData;
+  }
 }
+
