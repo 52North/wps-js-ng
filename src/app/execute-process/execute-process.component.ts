@@ -39,6 +39,7 @@ export class ExecuteProcessComponent implements OnInit {
    bBoxDataOutputs: BBoxDataOutput[];
    response: ExecuteResponse;
    processDescriptionResponse: ProcessDescriptionResponse;
+   transmissionModes = ['value', 'reference'];
 
   constructor() { }
 

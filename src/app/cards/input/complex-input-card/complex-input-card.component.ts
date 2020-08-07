@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output} from '@angular/core';
+import {Format} from 'wps-ng';
 
 @Component({
   selector: 'app-complex-input-card',
@@ -9,7 +10,7 @@ export class ComplexInputCardComponent implements OnInit {
   @Input() title: string;
   @Input() input: string;
   @Input() type: string;
-  @Input() formatList: string[];
+  @Input() formatList: Format[];
 
   @Output() selectedMimeTypeFormat: string;
   @Output() complexPayload: string;

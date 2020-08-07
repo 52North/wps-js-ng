@@ -3,9 +3,8 @@
     <h5 class="card-header">Bounding Box Output</h5>
     <h4 class="card-title"> {{title}}</h4>
     <h5 class="label">Type: {{type}}</h5>
-    <h4>Select Transmission Mode</h4>
 
-    <label  for="transmissionMode">Select MimeType/Schema/Encoding</label>
+    <label  for="transmissionMode">Select Transmission Mode</label>
     <select class="form-control" [(ngModel)]="selectedTransmissionMode" name="transmissionMode" id="transmissionMode" ngModel required>
       <option *ngFor="let transmissionMode of transmissionModes" [value]="transmissionMode" >{{transmissionMode}}</option>
     </select>

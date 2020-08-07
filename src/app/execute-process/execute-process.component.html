@@ -17,21 +17,39 @@
   <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
                           [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
                           [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
+
   ></app-literal-input-card>
   <pre></pre>
 
-  <app-complex-input-card ></app-complex-input-card>
+  <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
+                          [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
+                          [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
+                          [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
+  ></app-complex-input-card>
   <pre></pre>
-
-  <app-literal-input-card></app-literal-input-card>
 
   <h3>Output</h3>
-  <app-b-box-output-card></app-b-box-output-card>
+  <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title type="Literal"
+                         [transmissionModes]=transmissionModes
+  ></app-literal-output-card>
   <pre></pre>
-  <app-complex-output-card></app-complex-output-card>
+
+  <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
+                         type="BoundingBox"
+                         [transmissionModes]=transmissionModes
+
+  ></app-b-box-output-card>
   <pre></pre>
-  <app-literal-output-card></app-literal-output-card>
-  <pre></pre><pre></pre><pre></pre><pre></pre><pre></pre>
+
+  <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
+                           type="Complex"
+                           [transmissionModes]=transmissionModes
+                           [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
+  ></app-complex-output-card>
+  <pre></pre>
 
   <button class="button" type="submit" (click)="submit()">Execute Process</button>
+
+  <pre></pre><pre></pre><pre></pre><pre></pre><pre></pre>
+
 </div>
