@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {Format} from 'wps-ng';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {BBoxDataOutput, ComplexDataOutput, Format} from 'wps-ng';
 
 @Component({
   selector: 'app-complex-output-card',
@@ -14,8 +14,16 @@ export class ComplexOutputCardComponent implements OnInit {
 
   @Output() selectedTransmissionMode: string;
   @Output() selectedMimeTypeFormat: string;
+  @Output() messageEvent  = new EventEmitter<any>();
+  complexDataOutput: ComplexDataOutput;
+  sendResponse(){
+    this.messageEvent.emit(this.complexDataOutput);
+  }
 
-  constructor() { }
+  constructor() {
+    this.complexDataOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
+    undefined, undefined, undefined, undefined, undefined, 'value');
+  }
 
   ngOnInit(): void {
   }

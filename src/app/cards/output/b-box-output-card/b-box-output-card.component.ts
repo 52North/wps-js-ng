@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {BBoxDataOutput} from 'wps-ng';
 
 @Component({
   selector: 'app-b-box-output-card',
@@ -12,7 +13,15 @@ export class BBoxOutputCardComponent implements OnInit {
 
   @Output() selectedTransmissionMode: string;
 
-  constructor() { }
+  @Output() messageEvent  = new EventEmitter<any>();
+  bboxOutput: BBoxDataOutput;
+  sendResponse(){
+    this.messageEvent.emit(this.bboxOutput);
+  }
+
+  constructor() {  this.bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
+    undefined, 'EPSG:4326', undefined, undefined, undefined);
+  }
 
   ngOnInit(): void {
   }

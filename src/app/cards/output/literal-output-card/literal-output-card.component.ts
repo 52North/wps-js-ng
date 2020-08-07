@@ -1,4 +1,5 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {LiteralDataOutput} from 'wps-ng';
 
 @Component({
   selector: 'app-literal-output-card',
@@ -7,14 +8,23 @@ import {Component, Input, OnInit, Output} from '@angular/core';
 })
 export class LiteralOutputCardComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() type: string;
-  @Input() transmissionModes: any[];
+  @Input() title: string; //
+  @Input() type: string;  //
+  @Input() transmissionModes: any[]; //
 
   @Output() selectedTransmissionMode: string;
   @Output() literalValue: any;
 
-  constructor() { }
+  @Output() messageEvent  = new EventEmitter<any>();
+  literalDataOutput: LiteralDataOutput;
+  sendResponse(){
+    this.messageEvent.emit(this.literalDataOutput);
+  }
+
+  constructor() {
+    const literalDataOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
+    undefined, undefined, undefined, undefined, undefined, undefined);
+  }
 
   ngOnInit(): void {
   }

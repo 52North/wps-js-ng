@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
-import {Format} from 'wps-ng';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {BBoxDataInput, Format} from 'wps-ng';
 
 @Component({
   selector: 'app-b-box-input-card',
@@ -16,10 +16,20 @@ export class BBoxInputCardComponent implements OnInit {
 
   @Output() selectedMimeTypeFormat: string;
   @Output() selectedCoordinateReferenceSystem: string;
+  boundingBoxInput: BBoxDataInput;
+  @Output() messageEvent  = new EventEmitter<any>();
+  sendResponse(){
+    this.messageEvent.emit(this.boundingBoxInput);
+  }
 
-  constructor() { }
+  constructor() {
+    this.boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
+    '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
+  }
 
   ngOnInit(): void {
   }
+
+
 
 }
