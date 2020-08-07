@@ -1,12 +1,11 @@
 <div class="card w-75">
   <div class="card-body">
-    <h5 class="card-header">Literal Input</h5>
-    <h4 class="card-title"> Title: {{title}}</h4>
+    <h5 class="card-header">{{title}}</h5>
+    <h4 class="label">Type: {{type}}</h4>
     <h4 class="label">Input: {{input === '0' ? 'Optional' : 'Mandatory'}}</h4>
-
     <label  for="allowedTypes">Allowed types of Literal Data</label>
     <select class="form-control" name="allowedTypes" id="allowedTypes" >
-      <option *ngFor="let t of type" [value]="t.dataType" >{{t.dataType.type}}</option>
+      <option *ngFor="let dataDomain of literalDataDomains" [value]="dataDomain.dataType" >{{dataDomain.dataType.type}}</option>
     </select>
 
     <label> Value </label>

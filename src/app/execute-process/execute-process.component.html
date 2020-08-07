@@ -80,30 +80,51 @@
       </div>
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
         <div class="card-body">
-          <h3>Output</h3>
-          <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title type="Literal"
-                                   [transmissionModes]=transmissionModes
-          ></app-literal-output-card>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample5" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample5">
+            <div class="card card-body">
+
+              <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title
+                                       type="Literal"
+                                       [transmissionModes]=transmissionModes
+              ></app-literal-output-card>
+
+            </div>
+          </div>
           <pre></pre>
-
-          <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
-                                 type="BoundingBox"
-                                 [transmissionModes]=transmissionModes
-
-          ></app-b-box-output-card>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample6" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample6">
+            <div class="card card-body">
+              <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
+                                     type="BoundingBox"
+                                     [transmissionModes]=transmissionModes
+              ></app-b-box-output-card>
+            </div>
+          </div>
           <pre></pre>
-
-          <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
-                                   type="Complex"
-                                   [transmissionModes]=transmissionModes
-                                   [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
-          ></app-complex-output-card>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample7" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample7">
+            <div class="card card-body">
+              <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
+                                       type="Complex"
+                                       [transmissionModes]=transmissionModes
+                                       [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
+              ></app-complex-output-card>
+            </div>
+          </div>
           <pre></pre>
-
-          <button class="button" type="submit" (click)="submit()">Execute Process</button>
 
         </div>
+
       </div>
+      <button class="button" type="submit" (click)="submit()">Execute Process</button>
+
     </div>
 
   </div>

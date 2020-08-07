@@ -1,9 +1,8 @@
 <div class="card w-75">
   <div class="card-body">
-    <h5 class="card-header">Bounding Box Input</h5>
-    <h3 class="card-title">{{title}}</h3>
-    <h4 class="label">Input: {{input === '0' ? 'Optional' : 'Mandatory'}}</h4>
+    <h5 class="card-header">{{title}}</h5>
     <h4 class="label">Type: {{type}}</h4>
+    <h4 class="label">Input: {{input === '0' ? 'Optional' : 'Mandatory'}}</h4>
 
     <label  for="selectedMimeTypeFormat">Select MimeType</label>
     <select class="form-control" [(ngModel)]="selectedMimeTypeFormat"
