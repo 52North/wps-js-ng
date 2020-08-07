@@ -1,92 +1,89 @@
 <h2> Echo Process </h2>
 
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </button>
-      </h2>
-    </div>
-
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h2 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </button>
-      </h2>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-
-
 <div *ngIf="processDescriptionResponse !== undefined">
-  <h3>Input</h3>
-  <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
-                        [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
-                        [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
-                        [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
-  <pre></pre>
 
-  <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
-                          [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
-                          [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
-  ></app-literal-input-card>
-  <pre></pre>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            Inputs
+          </button>
+        </h2>
+      </div>
 
-  <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
-                          [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
-                          [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
+                                [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
+                                [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
+                                [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
+          <pre></pre>
 
-  ></app-literal-input-card>
-  <pre></pre>
+          <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
+                                  [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
+                                  [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
+          ></app-literal-input-card>
+          <pre></pre>
 
-  <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
-                          [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
-                          [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
-                          [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
-  ></app-complex-input-card>
-  <pre></pre>
+          <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
+                                  [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
+                                  [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
 
-  <h3>Output</h3>
-  <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title type="Literal"
-                         [transmissionModes]=transmissionModes
-  ></app-literal-output-card>
-  <pre></pre>
+          ></app-literal-input-card>
+          <pre></pre>
 
-  <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
-                         type="BoundingBox"
-                         [transmissionModes]=transmissionModes
+          <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
+                                  [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
+                                  [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
+                                  [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
+          ></app-complex-input-card>
+          <pre></pre>
+        </div>
+      </div>
+    </div>
 
-  ></app-b-box-output-card>
-  <pre></pre>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Outputs
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <h3>Output</h3>
+          <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title type="Literal"
+                                   [transmissionModes]=transmissionModes
+          ></app-literal-output-card>
+          <pre></pre>
 
-  <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
-                           type="Complex"
-                           [transmissionModes]=transmissionModes
-                           [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
-  ></app-complex-output-card>
-  <pre></pre>
+          <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
+                                 type="BoundingBox"
+                                 [transmissionModes]=transmissionModes
 
-  <button class="button" type="submit" (click)="submit()">Execute Process</button>
+          ></app-b-box-output-card>
+          <pre></pre>
 
-  <pre></pre><pre></pre><pre></pre><pre></pre><pre></pre>
+          <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
+                                   type="Complex"
+                                   [transmissionModes]=transmissionModes
+                                   [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
+          ></app-complex-output-card>
+          <pre></pre>
 
+          <button class="button" type="submit" (click)="submit()">Execute Process</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+<pre></pre><pre></pre><pre></pre><pre></pre><pre></pre>
+
+
+
+
