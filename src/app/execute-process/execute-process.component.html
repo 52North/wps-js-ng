@@ -14,31 +14,58 @@
 
       <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
-          <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
-                                [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
-                                [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
-                                [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
+
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample1">
+            <div class="card card-body">
+              <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
+                                    [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
+                                    [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
+                                    [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
+            </div>
+          </div>
+          <pre></pre>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample2">
+            <div class="card card-body">
+              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
+                                      [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
+                                      [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
+              ></app-literal-input-card>
+            </div>
+          </div>
           <pre></pre>
 
-          <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
-                                  [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
-                                  [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
-          ></app-literal-input-card>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample3">
+            <div class="card card-body">
+              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
+                                      [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
+                                      [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
+
+              ></app-literal-input-card>
+            </div>
+          </div>
           <pre></pre>
 
-          <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
-                                  [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
-                                  [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
-
-          ></app-literal-input-card>
-          <pre></pre>
-
-          <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
-                                  [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
-                                  [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
-                                  [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
-          ></app-complex-input-card>
-          <pre></pre>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+            Button with data-target
+          </button>
+          <div class="collapse" id="collapseExample4">
+            <div class="card card-body">
+              <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
+                                      [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
+                                      [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
+                                      [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
+              ></app-complex-input-card>
+            </div>
+          </div>
         </div>
       </div>
     </div>
