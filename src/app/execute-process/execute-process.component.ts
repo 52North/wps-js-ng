@@ -20,7 +20,7 @@ import {
   ProcessDescriptionResponse,
   WpsNgService
 } from 'wps-ng';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -46,9 +46,9 @@ export class ExecuteProcessComponent implements OnInit {
   lowerLeftBBoxInput = '-14.093957177836224 -260.2059521933809';
   upperRightBBoxInput = '-14.00869637063467 -260.2059521933809';
   // Literal #1
-  durationValue = '10000';
+  durationValue = '1000';
   // Literal #2
-  literalValue: '0.05';
+  literalValue = '0.05';
   // Complex Data
   selectedMimeTypeFormatComplexInput = new Format({mimeType: 'text/xml', schema: null, encoding: null});
   complexPayload = '<test><test2>hello</test2></test>';
@@ -56,11 +56,11 @@ export class ExecuteProcessComponent implements OnInit {
   // Output Variables
 
   // Literal
-  selectedTransmissionModeLiteral: string;
+  selectedTransmissionModeLiteral = 'value';
   // B-Box
-  selectedTransmissionModeBBox: string;
+  selectedTransmissionModeBBox = 'value';
   // Complex
-  selectedTransmissionModeComplexOutput: string;
+  selectedTransmissionModeComplexOutput = 'value';
   selectedMimeTypeFormatComplexOutput: Format;
 
   // Service Variables

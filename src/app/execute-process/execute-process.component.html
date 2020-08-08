@@ -32,12 +32,6 @@
                   <h4 class="label">Type: B-Box Input</h4>
                   <h4 class="label">Input: {{processDescriptionResponse.processOffering.process.inputs[0].minOccurs === '0' ? 'Optional' : 'Mandatory'}}</h4>
 
-                  <label  for="selectedMimeTypeFormat1">Select MimeType</label>
-                  <select class="form-control" [(ngModel)]="selectedMimeTypeFormatBBoxInput"
-                          name="selectedMimeTypeFormat" id="selectedMimeTypeFormat1"  ngModel required>
-                    <option *ngFor="let format of processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats" [value]="format" >{{format.mimeType | json}}</option>
-                  </select>
-
                   <label for="selectedCoordinateReferenceSystem1">Select Coordinate Reference System</label>
                   <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystemBBox"
                           name="selectedCoordinateReferenceSystem1" id="selectedCoordinateReferenceSystem1" ngModel required>
@@ -115,8 +109,7 @@
                     <option *ngFor="let dataDomain of processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains" [value]="dataDomain.dataType" >{{dataDomain.dataType.type}}</option>
                   </select>
 
-                  <label> Value </label>
-                  <label>
+                  <label> Value
                     <input [(ngModel)]="literalValue" >
                   </label>
 
