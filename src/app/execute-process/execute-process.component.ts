@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 /*
 import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
 import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
@@ -30,6 +30,7 @@ import {
 })
 export class ExecuteProcessComponent implements OnInit {
    wpsService: WpsNgService;
+  @Output() messageEvent  = new EventEmitter<any>();
 
    response: ExecuteResponse;
    processDescriptionResponse: ProcessDescriptionResponse;
@@ -93,30 +94,20 @@ export class ExecuteProcessComponent implements OnInit {
       undefined, undefined, undefined, undefined, undefined, 'value');
 
     this.outputs = [ literalOutput, bboxOutput, complexOutput];
-
-    this.xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
-      'sync', false, this.inputs, this.outputs);
-
   }
 
   submit() {
+    this.executeRequestXml = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
+      'sync', false, this.inputs, this.outputs);
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendResponseJson();
+        this.sendResponse();
       }), 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, this.inputs, this.outputs);
   }
 
-  executeExample_echoProcess() {
-
-  }
-
-  sendResponseJson(){
-
-  }
-
-   sendRequestXml(xmlRequestExecuteProcess: string) {
-
+  sendResponse(){
+    this.messageEvent.emit(this.response);
   }
 }
