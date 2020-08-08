@@ -5,8 +5,8 @@ export class BBoxDataInput implements DataInput{
    type: string;
    crs: string;
    dimension: string;
-   lowerLeftCorner: string;
-   upperRightCorner: string;
+   lowerCorner: string;
+   upperCorner: string;
 
   /**
    * the following parameters are mandatory: identifier, crs,
@@ -26,7 +26,7 @@ export class BBoxDataInput implements DataInput{
     this.identifier = identifier;
     this.crs = crs;
     this.dimension = dimension || undefined;
-    this.lowerLeftCorner = lowerCorner;
-    this.upperRightCorner = upperCorner;
+    this.lowerCorner = lowerCorner;
+    this.upperCorner = upperCorner;
   }
 }
