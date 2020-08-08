@@ -20,6 +20,7 @@ import {
   ProcessDescriptionResponse,
   WpsNgService
 } from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -68,7 +69,7 @@ export class ExecuteProcessComponent implements OnInit {
   private outputs: Array<DataOutput>;
   executeRequestXml: string;
 
-  constructor() { }
+  constructor( private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
@@ -101,13 +102,15 @@ export class ExecuteProcessComponent implements OnInit {
     const bboxOutput =  new BBoxDataOutput(this.processDescriptionResponse.processOffering.process.outputs[1].identifier,
       'text/xml', undefined, undefined, 'EPSG:4326', undefined,
       undefined, undefined, this.selectedTransmissionModeBBox);
-    const complexOutput = new ComplexDataOutput(this.processDescriptionResponse.processOffering.process.outputs[2].identifier, 'text/xml', undefined, undefined,
+    const complexOutput = new ComplexDataOutput(this.processDescriptionResponse.processOffering.process.outputs[2].identifier,
+      'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined, this.selectedTransmissionModeComplexOutput);
 
     this.outputs = [ literalOutput, bboxOutput, complexOutput];
     this.executeRequestXml = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, this.inputs, this.outputs);
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponse();

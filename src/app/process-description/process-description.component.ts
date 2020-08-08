@@ -32,6 +32,7 @@ export class ProcessDescriptionComponent implements OnInit {
   processDescriptionGet() {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);
     this.wpsService.processDescriptionGet(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
+      this.toastr.success('Process Description Response Received', 'Process Description');
       console.log(e);
       this.processDescriptionResponse = e;
       this.sendResponse();
@@ -41,6 +42,7 @@ export class ProcessDescriptionComponent implements OnInit {
   processDescriptionPost(){
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedUrl);
     this.wpsService.processDescriptionPost(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
+      this.toastr.success('Process Description Response Received', 'Process Description');
       console.log(e);
       this.processDescriptionResponse = e;
       this.sendResponse();

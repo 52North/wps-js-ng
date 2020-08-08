@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ExecuteResponse, ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesResponse} from 'wps-ng';
 import {ProcessDescriptionResponse} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-wps-example',
@@ -36,6 +37,8 @@ export class WpsExampleComponent implements OnInit {
     this.rightScreenTitle = 'Output appears here';
   }
 
+  constructor( private toastr: ToastrService) {
+  }
 
   updateRightScreenContents(title: string, jsonContent: any) {
     this.rightScreenTitle = title;

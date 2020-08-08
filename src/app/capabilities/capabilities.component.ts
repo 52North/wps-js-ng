@@ -31,6 +31,7 @@ export class CapabilitiesComponent implements OnInit {
   getCapabilitiesGET() {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.wpsService.getCapabilitiesGET( (e: CapabilitiesResponse) => {
+      this.toastr.success('Capabilities Response Received', 'Capabilities');
       console.log(e);
       this.capabilitiesResponse = e;
       this.sendResponse();
@@ -41,6 +42,7 @@ export class CapabilitiesComponent implements OnInit {
   getCapabilitiesPOST() {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.wpsService.getCapabilitiesPOST( (e: CapabilitiesResponse) => {
+      this.toastr.success('Capabilities Response Received', 'Capabilities');
       console.log(e);
       this.capabilitiesResponse = e;
       this.sendResponse();
@@ -52,7 +54,4 @@ export class CapabilitiesComponent implements OnInit {
     this.messageEvent.emit(this.capabilitiesResponse);
   }
 
-  showExampleError() {
-    this.toastr.error('Some Message', 'title');
-  }
 }
