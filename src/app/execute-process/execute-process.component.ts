@@ -40,16 +40,17 @@ export class ExecuteProcessComponent implements OnInit {
 
    // BBox Data
   selectedMimeTypeFormatBBoxInput: string;
-  selectedCoordinateReferenceSystem1: any;
-  lowerLeft: string;
-  upperRight: string;
+  selectedCoordinateReferenceSystemBBox = 'EPSG:4326';
+  selectedDimensionBBoxInput = '2';
+  lowerLeftBBoxInput = '-14.093957177836224 -260.2059521933809';
+  upperRightBBoxInput = '-14.00869637063467 -260.2059521933809';
   // Literal #1
-  durationValue: string;
+  durationValue = '10000';
   // Literal #2
-  literalValue: any;
+  literalValue: '0.05';
   // Complex Data
-  selectedMimeTypeFormatComplexInput: Format;
-  complexPayload: string;
+  selectedMimeTypeFormatComplexInput = new Format({mimeType: 'text/xml', schema: null, encoding: null});
+  complexPayload = '<test><test2>hello</test2></test>';
 
   // Output Variables
 
@@ -76,27 +77,34 @@ export class ExecuteProcessComponent implements OnInit {
     } );
     this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
 
-    const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
-      '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
-    const literalInput1 = new LiteralDataInput('duration', null, null, '1010');
-    const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
-    const complexInput = new ComplexDataInput('complexInput', 'text/xml',
-      null, null, null,
-      '<test><test2>hello</test2></test>');
-
-    this.inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
-
-    const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
-      undefined, undefined, undefined, undefined, undefined);
-    const bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
-      undefined, 'EPSG:4326', undefined, undefined, undefined);
-    const complexOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
-      undefined, undefined, undefined, undefined, undefined, 'value');
-
-    this.outputs = [ literalOutput, bboxOutput, complexOutput];
   }
 
   submit() {
+    const boundingBoxInput = new BBoxDataInput(this.processDescriptionResponse.processOffering.process.inputs[0].title,
+      this.selectedCoordinateReferenceSystemBBox, this.selectedDimensionBBoxInput, this.lowerLeftBBoxInput, this.upperRightBBoxInput);
+
+    const duration = new LiteralDataInput(this.processDescriptionResponse.processOffering.process.inputs[1].title,
+      null, null, this.durationValue);
+
+    const literalInput = new LiteralDataInput(this.processDescriptionResponse.processOffering.process.inputs[2].title,
+      null, null, this.literalValue);
+
+    const complexInput = new ComplexDataInput(this.processDescriptionResponse.processOffering.process.inputs[3].title,
+      this.selectedMimeTypeFormatComplexInput.mimeType,  this.selectedMimeTypeFormatComplexInput.schema,
+      this.selectedMimeTypeFormatComplexInput.encoding, null, this.complexPayload);
+
+    this.inputs = [complexInput, duration, literalInput, boundingBoxInput ];
+
+    const literalOutput = new LiteralDataOutput(this.processDescriptionResponse.processOffering.process.outputs[0].identifier,
+      'text/xml', undefined, undefined, undefined, undefined,
+      undefined, undefined, undefined, this.selectedTransmissionModeLiteral);
+    const bboxOutput =  new BBoxDataOutput(this.processDescriptionResponse.processOffering.process.outputs[1].identifier,
+      'text/xml', undefined, undefined, 'EPSG:4326', undefined,
+      undefined, undefined, this.selectedTransmissionModeBBox);
+    const complexOutput = new ComplexDataOutput(this.processDescriptionResponse.processOffering.process.outputs[2].identifier, 'text/xml', undefined, undefined,
+      undefined, undefined, undefined, undefined, undefined, this.selectedTransmissionModeComplexOutput);
+
+    this.outputs = [ literalOutput, bboxOutput, complexOutput];
     this.executeRequestXml = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, this.inputs, this.outputs);
     this.wpsService.execute( (response => {

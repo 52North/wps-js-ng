@@ -39,18 +39,21 @@
                   </select>
 
                   <label for="selectedCoordinateReferenceSystem1">Select Coordinate Reference System</label>
-                  <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystem1"
+                  <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystemBBox"
                           name="selectedCoordinateReferenceSystem1" id="selectedCoordinateReferenceSystem1" ngModel required>
                     <option *ngFor="let crs of processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs" [value]="crs" >{{crs}}</option>
                   </select>
+                  <label> Dimension
+                    <input matInput placeholder="" [(ngModel)]="selectedDimensionBBoxInput">
+                  </label>
                   <pre></pre>
 
                   <label> Lower Left Corner
-                    <input matInput placeholder="Example definition of the lower left corner" [(ngModel)]="lowerLeft">
+                    <input matInput placeholder="Example definition of the lower left corner" [(ngModel)]="lowerLeftBBoxInput">
                   </label>
                   <pre></pre>
                   <label> Upper Right Corner
-                    <input matInput placeholder="Example definition of the upper right corner" [(ngModel)]="upperRight">
+                    <input matInput placeholder="Example definition of the upper right corner" [(ngModel)]="upperRightBBoxInput">
                   </label>
 
                 </div>

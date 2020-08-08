@@ -17,13 +17,13 @@ export class WpsExampleComponent implements OnInit {
   versions: string[];
   capabilitiesResponse: CapabilitiesResponse;
   selectedProcessIdentifier: string;
-  private wpsService: WpsNgService;
+  wpsService: WpsNgService;
   rightScreenTitle: string;
   rightScreenJsonContent: string;
 
 
   ngOnInit(): void {
-    this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
+    this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.urls = [
       'http://geoprocessing.demo.52north.org:8080/javaps/service',
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
