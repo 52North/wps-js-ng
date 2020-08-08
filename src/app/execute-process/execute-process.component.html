@@ -20,22 +20,73 @@
           </button>
           <div class="collapse" id="collapseExample1">
             <div class="card card-body">
+              <!--
               <app-b-box-input-card [title]=processDescriptionResponse.processOffering.process.inputs[0].title
                                     [input]=processDescriptionResponse.processOffering.process.inputs[0].minOccurs
                                     [crsList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs
-                                    [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats></app-b-box-input-card>
+                                    [formatList]=processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats>
+              </app-b-box-input-card>-->
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.inputs[0].title}}</h5>
+                  <h4 class="label">Type: B-Box Input</h4>
+                  <h4 class="label">Input: {{processDescriptionResponse.processOffering.process.inputs[0].minOccurs === '0' ? 'Optional' : 'Mandatory'}}</h4>
+
+                  <label  for="selectedMimeTypeFormat1">Select MimeType</label>
+                  <select class="form-control" [(ngModel)]="selectedMimeTypeFormatBBoxInput"
+                          name="selectedMimeTypeFormat" id="selectedMimeTypeFormat1"  ngModel required>
+                    <option *ngFor="let format of processDescriptionResponse.processOffering.process.inputs[0].bboxData.formats" [value]="format" >{{format.mimeType | json}}</option>
+                  </select>
+
+                  <label for="selectedCoordinateReferenceSystem1">Select Coordinate Reference System</label>
+                  <select class="form-control" [(ngModel)]="selectedCoordinateReferenceSystem1"
+                          name="selectedCoordinateReferenceSystem1" id="selectedCoordinateReferenceSystem1" ngModel required>
+                    <option *ngFor="let crs of processDescriptionResponse.processOffering.process.inputs[0].bboxData.supportedCRSs" [value]="crs" >{{crs}}</option>
+                  </select>
+                  <pre></pre>
+
+                  <label> Lower Left Corner
+                    <input matInput placeholder="Example definition of the lower left corner" [(ngModel)]="lowerLeft">
+                  </label>
+                  <pre></pre>
+                  <label> Upper Right Corner
+                    <input matInput placeholder="Example definition of the upper right corner" [(ngModel)]="upperRight">
+                  </label>
+
+                </div>
+              </div>
+
             </div>
           </div>
+
           <pre></pre>
           <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
             Button with data-target
           </button>
           <div class="collapse" id="collapseExample2">
             <div class="card card-body">
-              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
+<!--              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[1].title
                                       [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains
                                       [input]=processDescriptionResponse.processOffering.process.inputs[1].minOccurs
-              ></app-literal-input-card>
+              ></app-literal-input-card>-->
+
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">processDescriptionResponse.processOffering.process.inputs[1].title</h5>
+                  <h4 class="label">Type: Literal Data</h4>
+                  <h4 class="label">Input: {{processDescriptionResponse.processOffering.process.inputs[1].minOccurs === '0' ? 'Optional' : 'Mandatory'}}</h4>
+                  <label  for="allowedTypes3">Allowed types of Literal Data</label>
+                  <select class="form-control" name="allowedTypes3" id="allowedTypes3" >
+                    <option *ngFor="let dataDomain of processDescriptionResponse.processOffering.process.inputs[1].literalData.literalDataDomains" [value]="dataDomain.dataType" >{{dataDomain.dataType.type}}</option>
+                  </select>
+                  <label> Value </label>
+                  <label>
+                    <input [(ngModel)]="durationValue" >
+                  </label>
+
+                </div>
+              </div>
+
             </div>
           </div>
           <pre></pre>
@@ -45,11 +96,30 @@
           </button>
           <div class="collapse" id="collapseExample3">
             <div class="card card-body">
-              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
+<!--              <app-literal-input-card [title]=processDescriptionResponse.processOffering.process.inputs[2].title
                                       [literalDataDomains]=processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains
                                       [input]=processDescriptionResponse.processOffering.process.inputs[2].minOccurs
 
-              ></app-literal-input-card>
+              ></app-literal-input-card>-->
+
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.inputs[2].title}}</h5>
+                  <h4 class="label">Type: Literal Data</h4>
+                  <h4 class="label">Input: {{processDescriptionResponse.processOffering.process.inputs[2].minOccurs === '0' ? 'Optional' : 'Mandatory'}}</h4>
+                  <label  for="allowedTypes">Allowed types of Literal Data</label>
+                  <select class="form-control" name="allowedTypes" id="allowedTypes" >
+                    <option *ngFor="let dataDomain of processDescriptionResponse.processOffering.process.inputs[2].literalData.literalDataDomains" [value]="dataDomain.dataType" >{{dataDomain.dataType.type}}</option>
+                  </select>
+
+                  <label> Value </label>
+                  <label>
+                    <input [(ngModel)]="literalValue" >
+                  </label>
+
+                </div>
+              </div>
+
             </div>
           </div>
           <pre></pre>
@@ -59,11 +129,29 @@
           </button>
           <div class="collapse" id="collapseExample4">
             <div class="card card-body">
-              <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
+<!--              <app-complex-input-card [title]= processDescriptionResponse.processOffering.process.inputs[3].title
                                       [input]= processDescriptionResponse.processOffering.process.inputs[3].minOccurs
                                       [type]= processDescriptionResponse.processOffering.process.inputs[3].identifier
                                       [formatList]= processDescriptionResponse.processOffering.process.inputs[3].complexData.formats
-              ></app-complex-input-card>
+              ></app-complex-input-card>-->
+
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.inputs[3].title}}</h5>
+                  <h4 class="label">Input: {{processDescriptionResponse.processOffering.process.inputs[3].minOccurs === '0' ? 'Optional' : 'Mandatory'}}</h4>
+                  <h4 class="label">Type: Complex Input</h4>
+
+                  <label  for="selectedMimeTypeFormatComplexInput">Select MimeType/Schema/Encoding</label>
+                  <select class="form-control" [(ngModel)]="selectedMimeTypeFormatComplexInput" name="selectedMimeTypeFormatComplexInput" id="selectedMimeTypeFormatComplexInput" ngModel required>
+                    <option *ngFor="let format of processDescriptionResponse.processOffering.process.inputs[3].complexData.formats" [value]="format" >{{format.mimeType}}</option>
+                  </select>
+
+                  <label for="payload">Complex Payload</label>
+                  <textarea name="payload" id="payload" [(ngModel)]="complexPayload"></textarea>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -86,10 +174,21 @@
           <div class="collapse" id="collapseExample5">
             <div class="card card-body">
 
-              <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title
+<!--              <app-literal-output-card [title]= processDescriptionResponse.processOffering.process.outputs[0].title
                                        type="Literal"
                                        [transmissionModes]=transmissionModes
-              ></app-literal-output-card>
+              ></app-literal-output-card>-->
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.outputs[0].title}}</h5>
+                  <h5 class="label">Type: Literal Output </h5>
+                  <label  for="selectedTransmissionModeLiteral">Select Transmission Mode</label>
+                  <select class="form-control" [(ngModel)]="selectedTransmissionModeLiteral" name="selectedTransmissionModeLiteral" id="selectedTransmissionModeLiteral" ngModel required>
+                    <option *ngFor="let transmissionMode of transmissionModes" [value]="transmissionMode" >{{transmissionMode}}</option>
+                  </select>
+
+                </div>
+              </div>
 
             </div>
           </div>
@@ -99,10 +198,23 @@
           </button>
           <div class="collapse" id="collapseExample6">
             <div class="card card-body">
-              <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
+<!--              <app-b-box-output-card [title]= processDescriptionResponse.processOffering.process.outputs[1].title
                                      type="BoundingBox"
                                      [transmissionModes]=transmissionModes
-              ></app-b-box-output-card>
+              ></app-b-box-output-card>-->
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.outputs[1].title}}</h5>
+                  <h5 class="label">Type: Bounding Box</h5>
+
+                  <label  for="selectedTransmissionModeBBox">Select Transmission Mode</label>
+                  <select class="form-control" [(ngModel)]="selectedTransmissionModeBBox" name="selectedTransmissionModeBBox" id="selectedTransmissionModeBBox" ngModel required>
+                    <option *ngFor="let transmissionMode of transmissionModes" [value]="transmissionMode" >{{transmissionMode}}</option>
+                  </select>
+
+                </div>
+              </div>
+
             </div>
           </div>
           <pre></pre>
@@ -111,11 +223,28 @@
           </button>
           <div class="collapse" id="collapseExample7">
             <div class="card card-body">
-              <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
+<!--              <app-complex-output-card [title]= processDescriptionResponse.processOffering.process.outputs[2].title
                                        type="Complex"
                                        [transmissionModes]=transmissionModes
                                        [formatList]=processDescriptionResponse.processOffering.process.outputs[2].complexData.formats
-              ></app-complex-output-card>
+              ></app-complex-output-card>-->
+              <div class="card w-75">
+                <div class="card-body">
+                  <h5 class="card-header">{{processDescriptionResponse.processOffering.process.outputs[2].title}}</h5>
+                  <h5 class="label">Type: Complex Output</h5>
+                  <label  for="transmissionMode">Select Transmission Mode</label>
+                  <select class="form-control" [(ngModel)]="selectedTransmissionModeComplexOutput" name="transmissionMode" id="transmissionMode" ngModel required>
+                    <option *ngFor="let transmissionMode of transmissionModes" [value]="transmissionMode" >{{transmissionMode}}</option>
+                  </select>
+
+                  <label  for="selectedMimeTypeFormat">Select MimeType/Schema/Encoding</label>
+                  <select class="form-control" [(ngModel)]="selectedMimeTypeFormatComplexOutput" name="selectedMimeTypeFormat" id="selectedMimeTypeFormat" ngModel required>
+                    <option *ngFor="let format of processDescriptionResponse.processOffering.process.outputs[2].complexData.formats" [value]="format" >{{format.mimeType}}</option>
+                  </select>
+
+                </div>
+              </div>
+
             </div>
           </div>
           <pre></pre>
@@ -129,7 +258,10 @@
 
   </div>
 </div>
-
+<label *ngIf="executeRequestXml !== undefined" for="executeRequestXml"> Execute Request Xml</label>
+<div  *ngIf="executeRequestXml !== undefined" id="executeRequestXml" class="jumbotron" >
+  <pre>{{ executeRequestXml | xml }}</pre>
+</div>
 <pre></pre><pre></pre><pre></pre><pre></pre><pre></pre>
 
 

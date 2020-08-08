@@ -12,9 +12,9 @@ import {ProcessDescriptionResponse} from '../../../projects/wps-ng/src/model/pro
 */
 
 import {
-  BBoxDataInput, BBoxDataOutput,
-  ComplexDataInput, ComplexDataOutput,
-  ExecuteResponse,
+  BBoxDataInput, BBoxDataOutput, DataInput,
+  ComplexDataInput, ComplexDataOutput, DataOutput,
+  ExecuteResponse, Format,
   LiteralDataInput,
   LiteralDataOutput,
   ProcessDescriptionResponse,
@@ -31,15 +31,40 @@ import {
 export class ExecuteProcessComponent implements OnInit {
    wpsService: WpsNgService;
 
-   complexDataInputs: ComplexDataInput[];
-   complexDataOutputs: ComplexDataOutput[];
-   literalDataInputs: LiteralDataInput[];
-   literalDataOutputs: LiteralDataOutput[];
-   bBoxDataInputs: BBoxDataInput[];
-   bBoxDataOutputs: BBoxDataOutput[];
    response: ExecuteResponse;
    processDescriptionResponse: ProcessDescriptionResponse;
    transmissionModes = ['value', 'reference'];
+
+   // Input Variables
+
+   // BBox Data
+  selectedMimeTypeFormatBBoxInput: string;
+  selectedCoordinateReferenceSystem1: any;
+  lowerLeft: string;
+  upperRight: string;
+  // Literal #1
+  durationValue: string;
+  // Literal #2
+  literalValue: any;
+  // Complex Data
+  selectedMimeTypeFormatComplexInput: Format;
+  complexPayload: string;
+
+  // Output Variables
+
+  // Literal
+  selectedTransmissionModeLiteral: string;
+  // B-Box
+  selectedTransmissionModeBBox: string;
+  // Complex
+  selectedTransmissionModeComplexOutput: string;
+  selectedMimeTypeFormatComplexOutput: Format;
+
+  // Service Variables
+  private xmlRequestExecuteProcess: string;
+  private inputs: Array<DataInput>;
+  private outputs: Array<DataOutput>;
+  executeRequestXml: string;
 
   constructor() { }
 
@@ -48,13 +73,6 @@ export class ExecuteProcessComponent implements OnInit {
     this.wpsService.processDescriptionGet('org.n52.javaps.test.EchoProcess', (response: ProcessDescriptionResponse) => {
       this.processDescriptionResponse = response;
     } );
-  }
-
-  submit() {
-
-  }
-
-  executeExample_echoProcess() {
     this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
 
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
@@ -65,7 +83,7 @@ export class ExecuteProcessComponent implements OnInit {
       null, null, null,
       '<test><test2>hello</test2></test>');
 
-    const inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
+    this.inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
 
     const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
@@ -74,18 +92,24 @@ export class ExecuteProcessComponent implements OnInit {
     const complexOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined, 'value');
 
-    const outputs = [ literalOutput, bboxOutput, complexOutput];
+    this.outputs = [ literalOutput, bboxOutput, complexOutput];
 
-    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
-      'sync', false, inputs, outputs);
-    this.sendRequestXml(xmlRequestExecuteProcess);
+    this.xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
+      'sync', false, this.inputs, this.outputs);
 
+  }
+
+  submit() {
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
         this.sendResponseJson();
       }), 'org.n52.javaps.test.EchoProcess', 'document',
-      'sync', false, inputs, outputs);
+      'sync', false, this.inputs, this.outputs);
+  }
+
+  executeExample_echoProcess() {
+
   }
 
   sendResponseJson(){

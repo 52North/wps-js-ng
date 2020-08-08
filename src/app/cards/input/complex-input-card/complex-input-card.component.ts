@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ComplexDataInput, Format} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-complex-input-card',
@@ -16,16 +17,18 @@ export class ComplexInputCardComponent implements OnInit {
   @Output() complexPayload = '<test>hello</test>';
   @Output() messageEvent  = new EventEmitter<any>();
   private readonly complexInput: ComplexDataInput;
-  sendResponse(){
-    this.messageEvent.emit(this.complexInput);
-  }
 
-  constructor() {
+  constructor( private toastr: ToastrService) {
      this.complexInput = new ComplexDataInput('complexInput', 'text/xml', null, null, null,
       '<test><test2>hello</test2></test>');
   }
 
   ngOnInit(): void {
+  }
+
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.complexInput);
   }
 
 }

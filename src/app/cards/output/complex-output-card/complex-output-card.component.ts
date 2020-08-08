@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BBoxDataOutput, ComplexDataOutput, Format} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-complex-output-card',
@@ -16,16 +17,16 @@ export class ComplexOutputCardComponent implements OnInit {
   @Output() selectedMimeTypeFormat: string;
   @Output() messageEvent  = new EventEmitter<any>();
   complexDataOutput: ComplexDataOutput;
-  sendResponse(){
-    this.messageEvent.emit(this.complexDataOutput);
-  }
 
-  constructor() {
+  constructor( private toastr: ToastrService) {
     this.complexDataOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
     undefined, undefined, undefined, undefined, undefined, 'value');
   }
 
   ngOnInit(): void {
   }
-
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.complexDataOutput);
+  }
 }

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {LiteralDataOutput} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-literal-output-card',
@@ -17,16 +18,16 @@ export class LiteralOutputCardComponent implements OnInit {
 
   @Output() messageEvent  = new EventEmitter<any>();
   literalDataOutput: LiteralDataOutput;
-  sendResponse(){
-    this.messageEvent.emit(this.literalDataOutput);
-  }
 
-  constructor() {
-    const literalDataOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
+  constructor( private toastr: ToastrService) {
+    this.literalDataOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
     undefined, undefined, undefined, undefined, undefined, undefined);
   }
 
   ngOnInit(): void {
   }
-
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.literalDataOutput);
+  }
 }

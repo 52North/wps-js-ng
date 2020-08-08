@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ComplexDataInput, LiteralDataDomains, LiteralDataInput} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-literal-input-card',
@@ -15,11 +16,9 @@ export class LiteralInputCardComponent implements OnInit {
   @Output() messageEvent  = new EventEmitter<any>();
   private readonly literalInput: LiteralDataInput;
 
-  sendResponse(){
-    this.messageEvent.emit(this.literalInput);
-  }
 
-  constructor() {
+
+  constructor( private toastr: ToastrService) {
      this.literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
      const literalInput1 = new LiteralDataInput('duration', null, null, '1010');
 
@@ -28,4 +27,8 @@ export class LiteralInputCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.literalInput);
+  }
 }

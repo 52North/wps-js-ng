@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BBoxDataOutput} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-b-box-output-card',
@@ -15,15 +16,18 @@ export class BBoxOutputCardComponent implements OnInit {
 
   @Output() messageEvent  = new EventEmitter<any>();
   bboxOutput: BBoxDataOutput;
-  sendResponse(){
-    this.messageEvent.emit(this.bboxOutput);
-  }
 
-  constructor() {  this.bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
+
+  constructor( private toastr: ToastrService)
+  {  this.bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
     undefined, 'EPSG:4326', undefined, undefined, undefined);
   }
 
   ngOnInit(): void {
+  }
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.bboxOutput);
   }
 
 }

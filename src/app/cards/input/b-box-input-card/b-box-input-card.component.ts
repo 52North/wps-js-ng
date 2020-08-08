@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {BBoxDataInput, Format} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-b-box-input-card',
@@ -18,16 +19,19 @@ export class BBoxInputCardComponent implements OnInit {
   @Output() selectedCoordinateReferenceSystem: string;
   boundingBoxInput: BBoxDataInput;
   @Output() messageEvent  = new EventEmitter<any>();
-  sendResponse(){
-    this.messageEvent.emit(this.boundingBoxInput);
-  }
 
-  constructor() {
+
+  constructor( private toastr: ToastrService) {
     this.boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
     '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
   }
 
   ngOnInit(): void {
+  }
+
+  sendResponse(){
+    this.toastr.error('Some Message', 'title');
+    this.messageEvent.emit(this.boundingBoxInput);
   }
 
 
