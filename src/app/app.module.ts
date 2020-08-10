@@ -14,15 +14,9 @@ import { CapabilitiesComponent } from './capabilities/capabilities.component';
 import { ProcessDescriptionComponent } from './process-description/process-description.component';
 import { ExecuteProcessComponent } from './execute-process/execute-process.component';
 import { StatusResultComponent } from './status-result/status-result.component';
-import { BBoxInputCardComponent } from './cards/input/b-box-input-card/b-box-input-card.component';
-import { ComplexInputCardComponent } from './cards/input/complex-input-card/complex-input-card.component';
-import { LiteralInputCardComponent } from './cards/input/literal-input-card/literal-input-card.component';
-import { BBoxOutputCardComponent } from './cards/output/b-box-output-card/b-box-output-card.component';
-import { LiteralOutputCardComponent } from './cards/output/literal-output-card/literal-output-card.component';
-import { ComplexOutputCardComponent } from './cards/output/complex-output-card/complex-output-card.component';
 import {MatInputModule} from '@angular/material/input';
 import {XmlPipe} from './xml-pipe';
-import {ToastrModule} from "ngx-toastr";
+import {ToastrModule} from 'ngx-toastr';
 import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-response/parse-stored-execute-response.component';
 
 @NgModule({
@@ -35,12 +29,6 @@ import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-resp
     ProcessDescriptionComponent,
     ExecuteProcessComponent,
     StatusResultComponent,
-    BBoxInputCardComponent,
-    ComplexInputCardComponent,
-    LiteralInputCardComponent,
-    BBoxOutputCardComponent,
-    LiteralOutputCardComponent,
-    ComplexOutputCardComponent,
     XmlPipe,
     ParseStoredExecuteResponseComponent
   ],
