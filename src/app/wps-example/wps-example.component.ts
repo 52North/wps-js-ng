@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ExecuteResponse, ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
 import {CapabilitiesResponse} from 'wps-ng';
 import {ProcessDescriptionResponse} from 'wps-ng';
-import {ToastrService} from "ngx-toastr";
+import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-wps-example',
@@ -22,6 +23,8 @@ export class WpsExampleComponent implements OnInit {
   rightScreenTitle: string;
   rightScreenJsonContent: string;
 
+  constructor(private toastr: ToastrService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
@@ -35,10 +38,12 @@ export class WpsExampleComponent implements OnInit {
     ];
     this.versions = ['1.0.0', '2.0.0'];
     this.rightScreenTitle = 'Output appears here';
+    if (window.location.href.includes('github.io')) {
+    this.toastr.warning('On Github Pages, some functionalities with non secure WPS Servers may not function properly',
+      'Github Pages', { timeOut: 9500 });
+    }
   }
 
-  constructor( private toastr: ToastrService) {
-  }
 
   updateRightScreenContents(title: string, jsonContent: any) {
     this.rightScreenTitle = title;

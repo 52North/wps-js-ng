@@ -17,6 +17,7 @@ import { StatusResultComponent } from './status-result/status-result.component';
 import {MatInputModule} from '@angular/material/input';
 import {XmlPipe} from './xml-pipe';
 import {ToastrModule} from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-response/parse-stored-execute-response.component';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-resp
         FlexLayoutModule,
         MatInputModule,
         ToastrModule.forRoot(),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
     ],
   providers: [],
   bootstrap: [AppComponent]
