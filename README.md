@@ -372,7 +372,7 @@ const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined
       undefined, undefined, undefined, undefined, undefined);
 ```
 
-##Contribute
+## Contribute
 
 To update the library, make your edits in the [library folder](projects/wps-ng).
 Then run the following commands in order:
