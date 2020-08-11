@@ -36,7 +36,7 @@ describe('ExecuteResponseData', () => {
       }
     };
     const resp = new ExecuteResponseData(data);
-    const cmplxData: ComplexDataOutput  = <ComplexDataOutput> resp.data;
+    const cmplxData: ComplexDataOutput  = resp.data as ComplexDataOutput;
 
     expect(cmplxData.mimeType).toContain('mimeType');
   });
