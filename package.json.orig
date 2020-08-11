@@ -37,9 +37,13 @@
     "timers": "^0.1.1",
     "tslib": "^2.0.0",
     "typings": "^2.1.1",
-    "vkbeautify": "^0.99.3",
+<<<<<<< HEAD
+    "wps-js-52-north": "^2.0.5",
     "wps-ng": "^1.0.12",
+=======
+    "vkbeautify": "^0.99.3",
     "wps-js-52-north": "^2.0.52",
+>>>>>>> 4238f6d9189d349c3cf7c1bca567fe08a6f71b4e
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

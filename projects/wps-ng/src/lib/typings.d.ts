@@ -130,7 +130,7 @@ declare namespace WpsServiceModule {
      * @jobId the ID of the asynchronously executed job
      */
     // tslint:disable-next-line:adjacent-overload-signatures
-    parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => any, jobId: string);
+    parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => any, storedExecuteResponseLocation: string);
 
   }
 }

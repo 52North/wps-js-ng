@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { WpsExampleComponent } from './wps-example/wps-example.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ExecuteExamplesComponent } from './execute-examples/execute-examples.component';
 import {WpsNgModule} from 'wps-ng';
 import {BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +20,10 @@ import { LiteralInputCardComponent } from './cards/literal-input-card/literal-in
 import { BBoxOutputCardComponent } from './cards/b-box-output-card/b-box-output-card.component';
 import { LiteralOutputCardComponent } from './cards/literal-output-card/literal-output-card.component';
 import { ComplexOutputCardComponent } from './cards/complex-output-card/complex-output-card.component';
-import {MatInputModule} from "@angular/material/input";
+import {MatInputModule} from '@angular/material/input';
+import {XmlPipe} from './xml-pipe';
+import {ToastrModule} from "ngx-toastr";
+import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-response/parse-stored-execute-response.component';
 
 @NgModule({
   declarations: [
@@ -38,18 +40,22 @@ import {MatInputModule} from "@angular/material/input";
     LiteralInputCardComponent,
     BBoxOutputCardComponent,
     LiteralOutputCardComponent,
-    ComplexOutputCardComponent
+    ComplexOutputCardComponent,
+    XmlPipe,
+    ParseStoredExecuteResponseComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    WpsNgModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatSelectModule,
-    FlexLayoutModule,
-    MatInputModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        WpsNgModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSelectModule,
+        FlexLayoutModule,
+        MatInputModule,
+        ToastrModule.forRoot(),
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

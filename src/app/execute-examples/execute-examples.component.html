@@ -7,11 +7,12 @@
       <form class="form-inline">
         <div class="form-group mb-2">
           <label>
-            <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Sync">
+            <input type="text" readonly class="form-control-plaintext"  value="Execute V1 Sync">
           </label>
         </div>
-        <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Sync()">Test</button>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeV1Sync()">Test</button>
       </form>
+
 
       <form class="form-inline">
         <div class="form-group mb-2">
@@ -26,11 +27,12 @@
       <form class="form-inline">
         <div class="form-group mb-2">
           <label>
-            <input type="text" readonly class="form-control-plaintext"  value="Simple Buffer Algorithm">
+            <input type="text" readonly class="form-control-plaintext"  value="Execute V2 Sync">
           </label>
         </div>
-        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_SimpleBufferAlgorithm()">Test</button>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Sync()">Test</button>
       </form>
+
 
       <form class="form-inline">
         <div class="form-group mb-2">
@@ -40,6 +42,17 @@
         </div>
         <button type="submit" class="btn btn-primary mb-2" (click)="executeV2Async()">Test</button>
       </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Simple Buffer Algorithm">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_SimpleBufferAlgorithm()">Test</button>
+      </form>
+
+
 
       <form class="form-inline">
         <div class="form-group mb-2">
@@ -67,6 +80,22 @@
         </div>
         <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_ManyInputs()">Test</button>
       </form>
+
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label>
+            <input type="text" readonly class="form-control-plaintext"  value="Echo Process">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" (click)="executeExample_echoProcess()">Test</button>
+      </form>
+
+
+    </div>
+
+    <label *ngIf="executeRequestXml !== undefined" for="executeRequestXml"> Execute Request Xml</label>
+    <div  *ngIf="executeRequestXml !== undefined" id="executeRequestXml" class="jumbotron" >
+      <pre>{{ executeRequestXml | xml }}</pre>
     </div>
 
   </div>

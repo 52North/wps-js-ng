@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {CapabilitiesResponse, WpsNgService} from 'wps-ng';
-import {CapabilitiesDataService} from "../capabilities-data.service";
+import {CapabilitiesDataService} from '../capabilities-data.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-capabilities',
@@ -18,11 +19,13 @@ export class CapabilitiesComponent implements OnInit {
   @Output() messageEvent  = new EventEmitter<any>();
 
 
-  constructor(private capabilitiesDataService: CapabilitiesDataService) { }
+  constructor(private capabilitiesDataService: CapabilitiesDataService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
     this.capabilitiesDataService.currentCapabilitiesResponse.subscribe( message => {this.capabilitiesResponse = message; } );
+    this.capabilitiesDataService.selectedUrl.subscribe( e => this.selectedURL = e);
+    this.capabilitiesDataService.selectedVersion.subscribe( e => this.selectedVersion = e);
   }
 
   getCapabilitiesGET() {
@@ -31,7 +34,7 @@ export class CapabilitiesComponent implements OnInit {
       console.log(e);
       this.capabilitiesResponse = e;
       this.sendResponse();
-      this.capabilitiesDataService.changeCapabilitiesResponse(e);
+      this.capabilitiesDataService.changeCapabilitiesResponse(e, this.selectedVersion, this.selectedURL);
     });
   }
 
@@ -41,7 +44,7 @@ export class CapabilitiesComponent implements OnInit {
       console.log(e);
       this.capabilitiesResponse = e;
       this.sendResponse();
-      this.capabilitiesDataService.changeCapabilitiesResponse(e);
+      this.capabilitiesDataService.changeCapabilitiesResponse(e, this.selectedVersion, this.selectedURL);
     });
   }
 
@@ -49,4 +52,7 @@ export class CapabilitiesComponent implements OnInit {
     this.messageEvent.emit(this.capabilitiesResponse);
   }
 
+  showExampleError() {
+    this.toastr.error('Some Message', 'title');
+  }
 }

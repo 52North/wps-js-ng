@@ -1,5 +1,16 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {
+import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
+import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
+import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
+import {LiteralDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/literal-data-input';
+import {DataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/data-input';
+import {ComplexDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/complex-data-output';
+import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/data-output';
+import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
+import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
+import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
+
+/*import {
   BBoxDataInput, BBoxDataOutput,
   ComplexDataInput,
   ComplexDataOutput,
@@ -9,7 +20,7 @@ import {
   LiteralDataInput,
   LiteralDataOutput,
   WpsNgService
-} from 'wps-ng';
+} from 'wps-ng';*/
 
 
 
@@ -19,7 +30,9 @@ import {
   styleUrls: ['./execute-examples.component.css']
 })
 export class ExecuteExamplesComponent implements OnInit {
-  @Output() messageEvent  = new EventEmitter<any>();
+  @Output() executeResponseEvent  = new EventEmitter<any>();
+  @Output() executeRequestXMLEvent  = new EventEmitter<any>();
+
   urls: string[];
   versions: string[];
   selectedURL = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
@@ -27,6 +40,7 @@ export class ExecuteExamplesComponent implements OnInit {
   rightScreenTitle: string;
   wpsService: WpsNgService;
   response: ExecuteResponse;
+  executeRequestXml: string;
 
   constructor() { }
 
@@ -44,14 +58,18 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeV1Sync() {
-    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
+
     const complexInput = new ComplexDataInput('data',
-      'application/x-zipped-shp',
+      'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
       'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
+
+
     const literalInput = new LiteralDataInput('width', 'xs:double',
       null, '0.05');
     const dataInputList = new Array<DataInput>();
+
     dataInputList.push(complexInput);
     dataInputList.push(literalInput);
 
@@ -62,11 +80,19 @@ export class ExecuteExamplesComponent implements OnInit {
     const dataOutputList = new Array<DataOutput>();
     dataOutputList.push(complexDataOutput);
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
+      'raw',
+      'sync',
+      false,
+      dataInputList,
+      dataOutputList);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
           console.log(response);
           this.response = response;
-          this.sendMessage();
+          this.sendResponseJson();
         } catch (e){
           console.error(e);
         }
@@ -74,7 +100,7 @@ export class ExecuteExamplesComponent implements OnInit {
       'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
       'document',
       'sync',
-      false,
+      true,
       dataInputList,
       dataOutputList);
   }
@@ -98,11 +124,19 @@ export class ExecuteExamplesComponent implements OnInit {
     const dataOutputList = new Array<DataOutput>();
     dataOutputList.push(complexDataOutput);
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm',
+      'document',
+      'async',
+      false,
+      dataInputList,
+      dataOutputList);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
           console.log(response);
           this.response = response;
-          this.sendMessage();
+          this.sendResponseJson();
         } catch (e){
           console.error(e);
         }
@@ -128,11 +162,14 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'sync', false, inputs, outputs);
   }
@@ -150,11 +187,14 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'async', false, inputs, outputs);
   }
@@ -172,11 +212,14 @@ export class ExecuteExamplesComponent implements OnInit {
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'async', false, inputs, outputs);
   }
@@ -194,10 +237,14 @@ export class ExecuteExamplesComponent implements OnInit {
       undefined, undefined, undefined, undefined, undefined, undefined);
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'r.resample', 'document',
+      'async', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'r.resample', 'document',
       'async', false, inputs, outputs);
   }
@@ -217,10 +264,14 @@ export class ExecuteExamplesComponent implements OnInit {
       undefined, 'base64', undefined, undefined, undefined, undefined, undefined, undefined );
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
       'sync', false, inputs, outputs);
   }
@@ -244,42 +295,57 @@ export class ExecuteExamplesComponent implements OnInit {
       undefined, 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.python.algorithm.QuakeMLProcessBBox', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
+
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
+        this.sendResponseJson();
       }), 'org.n52.wps.python.algorithm.QuakeMLProcessBBox', 'document',
       'sync', false, inputs, outputs);
   }
 
   executeExample_echoProcess() {
-    this.wpsService = new WpsNgService('1.0.0', 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService');
-    const complexInput = new ComplexDataInput('complexInput', 'text/xml',
-      null, null, null,
-      'test');
-    const literalInput = new LiteralDataInput('literalInput', null,
-      null, '0.05');
+    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
+
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
-    const inputs = [complexInput, literalInput];
+    // const literalInput1 = new LiteralDataInput('duration', null, null, '0.05');
+    const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
+    const complexInput = new ComplexDataInput('complexInput', 'text/xml',
+      null, null, null,
+      '<test><test2>hello</test2></test>');
+
+    const inputs = [complexInput, literalInput, boundingBoxInput ];
 
     const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
-      undefined, undefined, undefined, undefined, 'test');
-    const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
-    const complexOutput = new ComplexDataOutput('complexOutput', undefined, undefined, undefined,
+    const bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
+      undefined, 'EPSG:4326', undefined, undefined, undefined);
+    const complexOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined, 'value');
-    const outputs = [ complexOutput, literalOutput];
 
+    const outputs = [ literalOutput, bboxOutput, complexOutput];
+
+    const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.javaps.test.EchoProcess', 'document',
+      'sync', false, inputs, outputs);
+    this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
         console.log(response);
         this.response = response;
-        this.sendMessage();
-      }), 'org.n52.wps.server.algorithm.test.EchoProcess', 'document',
+        this.sendResponseJson();
+      }), 'org.n52.javaps.test.EchoProcess', 'document',
       'sync', false, inputs, outputs);
   }
-  sendMessage(){
-    this.messageEvent.emit(this.response);
+
+  sendResponseJson(){
+    this.executeResponseEvent.emit(this.response);
+  }
+  sendRequestXml(request: string){
+    this.executeRequestXml = request;
+    this.executeRequestXMLEvent.emit(request);
   }
 }

@@ -1,3 +1,13 @@
+
+<label for="url">Select Url</label>
+
+<div class="input-group mb-3">
+  <pre></pre>
+  <label for="url"></label><select class="form-control" [(ngModel)]="selectedURL" name="url" id="url" ngModel required>
+    <option *ngFor="let url of urls" [value]="url" >{{url}}</option>
+  </select>
+</div>
+
 <div class="input-group mb-3">
   <input  [(ngModel)]="jobIdStatus" type="text" class="form-control" placeholder="Job Id" aria-label="Job Id" aria-describedby="button-addon1">
   <div class="input-group-append">

@@ -221,6 +221,13 @@ For [DataOutput](projects/wps-ng/src/model/execute.process/request/output/data-o
 * [LiteralDataOutput](projects/wps-ng/src/model/execute.process/request/output/literal-data-output.ts)
 * [BBoxDataOutput](projects/wps-ng/src/model/execute.process/request/output/b-box-data-output.ts)
 
+#### Retrieve Stored ExecuteResponse (WPS 1.0.0)
+For WPS 1.0.0 execute operation you may define to execute it asynchronously and store a status document on the server, which is updated by the WPS. With the following method you can retrieve the response document of type [ExecuteResponse](projects/wps-ng/src/model/execute.process/response/execute-response.ts).
+```ts
+    this.wpsService.parseStoredExecuteResponse_WPS_1_0( (response: ExecuteResponse) => {
+      console.log(response);
+    } , this.form.value.url);
+```
 
 #### Type Definitions
 Click on the objects below for more on Type Details
@@ -365,7 +372,7 @@ const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined
       undefined, undefined, undefined, undefined, undefined);
 ```
 
-##Contribute
+## Contribute
 
 To update the library, make your edits in the [library folder](projects/wps-ng).
 Then run the following commands in order:
