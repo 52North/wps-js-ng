@@ -120,7 +120,7 @@ The function has 2 parameters, First is a `callback`  parameter 'response' after
 ```ts
 import { ProcessDescriptionResponse } from 'wps-ng'
 
-  this.wpsService.processDescriptionPost(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
+  this.wpsService.processDescriptionGet(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
        console.log(e);
      });
 ```
