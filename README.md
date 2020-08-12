@@ -120,7 +120,7 @@ The function has 2 parameters, First is a `callback`  parameter 'response' after
 ```ts
 import { ProcessDescriptionResponse } from 'wps-ng'
 
-  this.wpsService.processDescriptionPost(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
+  this.wpsService.processDescriptionGet(this.selectedProcessIdentifier, (e: ProcessDescriptionResponse) => {
        console.log(e);
      });
 ```
@@ -372,7 +372,7 @@ const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined
       undefined, undefined, undefined, undefined, undefined);
 ```
 
-##Contribute
+## Contribute
 
 To update the library, make your edits in the [library folder](projects/wps-ng).
 Then run the following commands in order:
