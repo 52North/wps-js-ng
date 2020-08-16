@@ -24,13 +24,17 @@ export class WpsNgService {
 
     const setting = new Settings(_url, _version);
     if (ServiceInject != null) {
-      this._wpsServiceJS = new ServiceInject(setting);
+      this._wpsServiceJS = new ServiceInject();
     }
     else {
       this._wpsServiceJS = new WpsService(setting);
     }
   }
 
+
+  get wpsServiceJS(): any {
+    return this._wpsServiceJS;
+  }
 
   set wpsServiceJS(value: any) {
     this._wpsServiceJS = value;
