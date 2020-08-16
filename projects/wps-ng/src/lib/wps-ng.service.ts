@@ -14,7 +14,7 @@ declare var WpsService: any;
 
 export class WpsNgService {
   private _wpsServiceJS: any;
-  constructor(private _version: string , private _url: string) {
+  constructor(private _version: string , private _url: string, private ServiceInject?: any) {
     // Url Check
     if (!WpsNgService.isValidUrl(_url)) {
       throw new Error('Url ' + _url + ' is not valid.');
@@ -23,7 +23,12 @@ export class WpsNgService {
     this._version = (_version === WPS_VERSION_2) ? WPS_VERSION_2 : WPS_VERSION_1;
 
     const setting = new Settings(_url, _version);
-    this._wpsServiceJS = new WpsService(setting);
+    if (ServiceInject != null) {
+      this._wpsServiceJS = new ServiceInject(setting);
+    }
+    else {
+      this._wpsServiceJS = new WpsService(setting);
+    }
   }
 
 
