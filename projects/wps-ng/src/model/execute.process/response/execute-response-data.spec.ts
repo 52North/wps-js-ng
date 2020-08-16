@@ -1,5 +1,4 @@
 import { ExecuteResponseData } from './execute-response-data';
-import {ComplexData} from '../../process.description/complex-data';
 import {ComplexDataOutput} from '../request/output/complex-data-output';
 
 describe('ExecuteResponseData', () => {
@@ -37,7 +36,18 @@ describe('ExecuteResponseData', () => {
     };
     const resp = new ExecuteResponseData(data);
     const cmplxData: ComplexDataOutput  = resp.data as ComplexDataOutput;
-
     expect(cmplxData.mimeType).toContain('mimeType');
   });
+  it('Null Json input exception check', () => {
+    const executeResponseData = new ExecuteResponseData(null);
+    expect(executeResponseData).toBeDefined();
+    expect(executeResponseData).toBeInstanceOf(ExecuteResponseData);
+  });
+
+  it('Undefined Json input exception check', () => {
+    const executeResponseData = new ExecuteResponseData(undefined);
+    expect(executeResponseData).toBeDefined();
+    expect(executeResponseData).toBeInstanceOf(ExecuteResponseData);
+  });
 });
+

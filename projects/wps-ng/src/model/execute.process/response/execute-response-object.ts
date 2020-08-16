@@ -7,9 +7,12 @@ export class ExecuteResponseObject {
 
   constructor(executeResponseJson: any) {
     // type: string, serviceVersion: string, responseDocument: ExecuteResponseDocument
-    this._type = executeResponseJson.type;
-    this._serviceVersion = executeResponseJson.serviceVersion;
-    this._responseDocument = new ExecuteResponseDocument(executeResponseJson.responseDocument);
+    if (executeResponseJson != null) {
+      this._type = executeResponseJson.type;
+      this._serviceVersion = executeResponseJson.serviceVersion;
+      this._responseDocument = new ExecuteResponseDocument(executeResponseJson.responseDocument);
+    }
+
   }
 
   get type(): string {

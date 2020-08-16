@@ -7,10 +7,12 @@ export class ExecuteOutput {
   private readonly _data: ExecuteResponseData;
 
   constructor(executeOutput: any) {
-    this._identifier = executeOutput.identifier;
-    this._title = executeOutput.title;
-    this._abstractValue = executeOutput.abstractValue;
-    this._data = new ExecuteResponseData(executeOutput.data);
+    if (executeOutput != null) {
+      this._identifier = executeOutput.identifier;
+      this._title = executeOutput.title;
+      this._abstractValue = executeOutput.abstractValue;
+      this._data = new ExecuteResponseData(executeOutput.data);
+    }
   }
 
   get identifier(): string {
