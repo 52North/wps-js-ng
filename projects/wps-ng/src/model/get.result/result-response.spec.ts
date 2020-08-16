@@ -6,15 +6,15 @@ describe('ResultResponseDocument', () => {
   });
 
   it('Null Json input exception check', () => {
-    const status = new ResultResponse(null);
-    expect(status).toBeDefined();
-    expect(status).toBeInstanceOf(ResultResponse);
+    const resultResponse = new ResultResponse(null);
+    expect(resultResponse).toBeDefined();
+    expect(resultResponse).toBeInstanceOf(ResultResponse);
   });
 
   it('Undefined Json input exception check', () => {
-    const status = new ResultResponse(undefined);
-    expect(status).toBeDefined();
-    expect(status).toBeInstanceOf(ResultResponse);
+    const resultResponse = new ResultResponse(undefined);
+    expect(resultResponse).toBeDefined();
+    expect(resultResponse).toBeInstanceOf(ResultResponse);
   });
 
 });
