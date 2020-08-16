@@ -1,7 +1,6 @@
 import {Address} from './address';
 
 export class ContactInfo {
-
   private readonly _address: Address;
 
   constructor(contactInfoJson: any) {

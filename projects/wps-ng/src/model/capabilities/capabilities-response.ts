@@ -5,8 +5,10 @@ export class CapabilitiesResponse {
   private readonly _capabilities: Capabilities;
 
   constructor(capabilitiesResponseJson: any) {
-    this._responseDocument = capabilitiesResponseJson.responseDocument;
-    this._capabilities = new Capabilities(capabilitiesResponseJson.capabilities);
+    if (capabilitiesResponseJson != null) {
+      this._responseDocument = capabilitiesResponseJson.responseDocument;
+      this._capabilities = new Capabilities(capabilitiesResponseJson.capabilities);
+    }
   }
 
 

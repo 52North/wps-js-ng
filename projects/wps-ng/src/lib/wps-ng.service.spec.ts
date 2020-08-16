@@ -1,6 +1,5 @@
 
 import { WpsNgService } from './wps-ng.service';
-import {TestBed} from '@angular/core/testing';
 
 
 class MockedWpsJsService {
