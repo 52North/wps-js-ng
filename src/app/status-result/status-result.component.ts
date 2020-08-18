@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ResultResponse, StatusResponse, WpsNgService} from 'wps-ng';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-status-result',
@@ -17,7 +18,7 @@ export class StatusResultComponent implements OnInit {
   private statusResponse: StatusResponse;
   urls: string[];
 
-  constructor() { }
+  constructor( private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.urls = [
@@ -33,6 +34,7 @@ export class StatusResultComponent implements OnInit {
   getStatus() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
     this.wpsService.getStatus_WPS_2_0((response: StatusResponse) => {
+      this.toastr.success('Status Response Received', 'Get Status');
       this.statusResponse = response;
       this.sendStatusResponse();
     }, this.jobIdStatus);
@@ -41,6 +43,7 @@ export class StatusResultComponent implements OnInit {
   getResult() {
     this.wpsService = new WpsNgService('2.0.0', this.selectedURL);
     this.wpsService.getResult_WPS_2_0((response: ResultResponse) => {
+      this.toastr.success('Result Response Received', 'Get Result');
       this.resultResponse = response;
       this.sendResultResponse();
     }, this.jobIdResult);

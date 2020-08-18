@@ -1,4 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+/*
 import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
 import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
 import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
@@ -9,8 +10,9 @@ import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/req
 import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
 import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
 import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
+*/
 
-/*import {
+import {
   BBoxDataInput, BBoxDataOutput,
   ComplexDataInput,
   ComplexDataOutput,
@@ -20,7 +22,8 @@ import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/
   LiteralDataInput,
   LiteralDataOutput,
   WpsNgService
-} from 'wps-ng';*/
+} from 'wps-ng';
+import {ToastrService} from "ngx-toastr";
 
 
 
@@ -42,7 +45,7 @@ export class ExecuteExamplesComponent implements OnInit {
   response: ExecuteResponse;
   executeRequestXml: string;
 
-  constructor() { }
+  constructor( private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.wpsService = new WpsNgService( this.selectedVersion, this.selectedURL);
@@ -90,6 +93,7 @@ export class ExecuteExamplesComponent implements OnInit {
 
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
+          this.toastr.success('Execute Response Received', 'Execute');
           console.log(response);
           this.response = response;
           this.sendResponseJson();
@@ -134,6 +138,7 @@ export class ExecuteExamplesComponent implements OnInit {
 
     this.wpsService.execute((response: ExecuteResponse) => {
         try {
+          this.toastr.success('Execute Response Received', 'Execute');
           console.log(response);
           this.response = response;
           this.sendResponseJson();
@@ -167,6 +172,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -192,6 +198,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -217,6 +224,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -242,6 +250,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -269,6 +278,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -300,6 +310,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();
@@ -312,13 +323,13 @@ export class ExecuteExamplesComponent implements OnInit {
 
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
-    // const literalInput1 = new LiteralDataInput('duration', null, null, '0.05');
+    const literalInput1 = new LiteralDataInput('duration', null, null, '1010');
     const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
     const complexInput = new ComplexDataInput('complexInput', 'text/xml',
       null, null, null,
       '<test><test2>hello</test2></test>');
 
-    const inputs = [complexInput, literalInput, boundingBoxInput ];
+    const inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
 
     const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
@@ -334,6 +345,7 @@ export class ExecuteExamplesComponent implements OnInit {
     this.sendRequestXml(xmlRequestExecuteProcess);
 
     this.wpsService.execute( (response => {
+        this.toastr.success('Execute Response Received', 'Execute');
         console.log(response);
         this.response = response;
         this.sendResponseJson();

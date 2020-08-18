@@ -14,15 +14,10 @@ import { CapabilitiesComponent } from './capabilities/capabilities.component';
 import { ProcessDescriptionComponent } from './process-description/process-description.component';
 import { ExecuteProcessComponent } from './execute-process/execute-process.component';
 import { StatusResultComponent } from './status-result/status-result.component';
-import { BBoxInputCardComponent } from './cards/b-box-input-card/b-box-input-card.component';
-import { ComplexInputCardComponent } from './cards/complex-input-card/complex-input-card.component';
-import { LiteralInputCardComponent } from './cards/literal-input-card/literal-input-card.component';
-import { BBoxOutputCardComponent } from './cards/b-box-output-card/b-box-output-card.component';
-import { LiteralOutputCardComponent } from './cards/literal-output-card/literal-output-card.component';
-import { ComplexOutputCardComponent } from './cards/complex-output-card/complex-output-card.component';
 import {MatInputModule} from '@angular/material/input';
 import {XmlPipe} from './xml-pipe';
-import {ToastrModule} from "ngx-toastr";
+import {ToastrModule} from 'ngx-toastr';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-response/parse-stored-execute-response.component';
 
 @NgModule({
@@ -35,12 +30,6 @@ import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-resp
     ProcessDescriptionComponent,
     ExecuteProcessComponent,
     StatusResultComponent,
-    BBoxInputCardComponent,
-    ComplexInputCardComponent,
-    LiteralInputCardComponent,
-    BBoxOutputCardComponent,
-    LiteralOutputCardComponent,
-    ComplexOutputCardComponent,
     XmlPipe,
     ParseStoredExecuteResponseComponent
   ],
@@ -54,7 +43,8 @@ import { ParseStoredExecuteResponseComponent } from './parse-stored-execute-resp
         FlexLayoutModule,
         MatInputModule,
         ToastrModule.forRoot(),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterTestingModule
     ],
   providers: [],
   bootstrap: [AppComponent]

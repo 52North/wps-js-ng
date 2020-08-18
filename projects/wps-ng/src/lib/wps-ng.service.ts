@@ -13,7 +13,7 @@ declare var WpsService: any;
 
 
 export class WpsNgService {
-  private wpsServiceJS: any;
+  private _wpsServiceJS: any;
   constructor(private _version: string , private _url: string) {
     // Url Check
     if (!WpsNgService.isValidUrl(_url)) {
@@ -23,7 +23,12 @@ export class WpsNgService {
     this._version = (_version === WPS_VERSION_2) ? WPS_VERSION_2 : WPS_VERSION_1;
 
     const setting = new Settings(_url, _version);
-    this.wpsServiceJS = new WpsService(setting);
+    this._wpsServiceJS = new WpsService(setting);
+  }
+
+
+  set wpsServiceJS(value: any) {
+    this._wpsServiceJS = value;
   }
 
   /**
@@ -77,7 +82,7 @@ export class WpsNgService {
    */
   getCapabilitiesGET(callback: (response: CapabilitiesResponse) => void): void {
     let capabilitiesResponse: CapabilitiesResponse;
-    this.wpsServiceJS.getCapabilities_GET((response: any) => {
+    this._wpsServiceJS.getCapabilities_GET((response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -94,7 +99,7 @@ export class WpsNgService {
    */
   getCapabilitiesPOST(callback: (capabilitiesResponse: CapabilitiesResponse) => void) {
     let capabilitiesResponse: CapabilitiesResponse;
-    this.wpsServiceJS.getCapabilities_POST((response: any) => {
+    this._wpsServiceJS.getCapabilities_POST((response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -112,7 +117,7 @@ export class WpsNgService {
    */
   processDescriptionGet( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
     let processDescriptionResponse: ProcessDescriptionResponse;
-    this.wpsServiceJS.describeProcess_GET( (response: any) => {
+    this._wpsServiceJS.describeProcess_GET( (response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -130,7 +135,7 @@ export class WpsNgService {
    */
   processDescriptionPost( processIdentifier: string , callback: (response: ProcessDescriptionResponse) => void) {
     let processDescriptionResponse: ProcessDescriptionResponse;
-    this.wpsServiceJS.describeProcess_POST( (response: any) => {
+    this._wpsServiceJS.describeProcess_POST( (response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -159,7 +164,7 @@ export class WpsNgService {
   execute(callback: (response: ExecuteResponse) => void , processIdentifier: string, responseFormat: string, executionMode: string,
           lineage: boolean, inputs: Array<DataInput>, outputs: Array<DataOutput>) {
     let executeResponse;
-    this.wpsServiceJS.execute( (response: any) => {
+    this._wpsServiceJS.execute( (response: any) => {
       // Check for error
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
@@ -180,7 +185,7 @@ export class WpsNgService {
    */
   getStatus_WPS_2_0(callback: (StatusResponse) => void, jobId: string) {
     let getStatusResponse;
-    this.wpsServiceJS.getStatus_WPS_2_0( (response: any) => {
+    this._wpsServiceJS.getStatus_WPS_2_0( (response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -200,7 +205,7 @@ export class WpsNgService {
    */
   getResult_WPS_2_0(callback: (resultResponse: ResultResponse) => void, jobId: string) {
     let getResultResponse: ResultResponse;
-    this.wpsServiceJS.getResult_WPS_2_0( (response: any) => {
+    this._wpsServiceJS.getResult_WPS_2_0( (response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -221,7 +226,7 @@ export class WpsNgService {
 
   parseStoredExecuteResponse_WPS_1_0(callback: (response: ExecuteResponse) => void, storedExecuteResponseLocation: string){
     let executeResponse: ExecuteResponse;
-    this.wpsServiceJS.parseStoredExecuteResponse_WPS_1_0( (response: any) => {
+    this._wpsServiceJS.parseStoredExecuteResponse_WPS_1_0( (response: any) => {
       if (response.textStatus === 'error') {
         throw new Error(response.errorThrown);
       }
@@ -232,7 +237,7 @@ export class WpsNgService {
 
   getXmlRequestExecuteProcess(processIdentifier: string, responseFormat: string, executionMode: string,
                               lineage: boolean, inputs: Array<DataInput>, outputs: Array<DataOutput>): string {
-    return this.wpsServiceJS.getXmlRequestExecuteProcess( processIdentifier, responseFormat,
+    return this._wpsServiceJS.getXmlRequestExecuteProcess( processIdentifier, responseFormat,
       executionMode, lineage, inputs, outputs);
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSelectChange} from '@angular/material/select';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +10,7 @@ import {MatSelectChange} from '@angular/material/select';
 export class ToolbarComponent implements OnInit {
   selected: any;
 
-  constructor() { }
+  constructor( private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
