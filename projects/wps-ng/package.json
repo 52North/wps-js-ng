@@ -1,6 +1,6 @@
 {
   "name": "wps-ng",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "peerDependencies": {
     "@angular/common": "^10.0.2",
     "@angular/core": "^10.0.2"
