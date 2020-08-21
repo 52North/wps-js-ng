@@ -337,8 +337,6 @@ import { BBoxDataInput } from 'wps-ng'
 *    upperCorner: string
 */
 
-
-
     const inputBoundingBox = new BBoxDataInput('input-boundingbox', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
 ```
@@ -350,6 +348,23 @@ Very similar to Input Objects, Output Object Class are also packed in the librar
 #### Literal Data Output
 ```ts
 import { LiteralDataOutput } from 'wps-ng'
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @asReference boolean, "true" or "false"
+   * @abstractValue new description as text of the 'Abstract' element
+   * 				  of the response document
+   * @dataType string value representing type of data such as 'application/xml'
+   * @uom unit of measure; may be 'undefined'
+   * @value the value of data in the received response
+   * @transmission either "value" or "reference"
+   */
 
  const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
        undefined, undefined, undefined, undefined, 'test');
@@ -358,17 +373,47 @@ import { LiteralDataOutput } from 'wps-ng'
 
 ```ts
 import { ComplexDataOutput } from 'wps-ng'
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @uom unit of measure; may be 'undefined'
+   * @asReference boolean, "true" or "false"
+   * @title new title
+   * @abstractValue new description as text of the 'Abstract' element
+   * 				  of the response document
+   * @transmission either "value" or "reference"
+   */
 
 const complexDataOutput: ComplexDataOutput = new ComplexDataOutput('result', 'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd',
-      'UTF-8', null, false, 'result', 'result');
+      'UTF-8', null, false, 'result', 'result', 'value');
 ```
 
 #### Bounding Box Data Output
 
 ```ts
 import { BBoxDataOutput } from 'wps-ng'
-
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @crs coordinate reference system URI
+   * @dimension number of dimensions in this CRS
+   * @lowerCorner orderedSequence of double values
+   * @upperCorner orderedSequence of double values
+   * @transmission either "value" or "reference"
+   */
 const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
 ```
