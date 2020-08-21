@@ -306,7 +306,7 @@ import { LiteralDataInput } from 'wps-ng'
 #### Complex Data Input
 
 ```ts
-import { ComplexDataOutput } from 'wps-ng'
+import { ComplexDataInput } from 'wps-ng'
 /*  @params:
 *    identifier: string, 
 *    mimeType: string, 
@@ -319,9 +319,10 @@ import { ComplexDataOutput } from 'wps-ng'
 *    value?: any,            // Optional param
 *    transmission?: string   // Optional param
 */
-const complexDataOutput: ComplexDataOutput = new ComplexDataOutput('result', 'text/xml',
-      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd',
-      'UTF-8', null, false, 'result', 'result');
+
+const complexInput = new ComplexDataInput('data',
+  'text/xml', 'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
+  'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
 ```
 
 #### Bounding Box Data Input
@@ -346,14 +347,14 @@ import { BBoxDataInput } from 'wps-ng'
 Very similar to Input Objects, Output Object Class are also packed in the library.
 
 
-#### Literal Data Input
+#### Literal Data Output
 ```ts
 import { LiteralDataOutput } from 'wps-ng'
 
  const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
        undefined, undefined, undefined, undefined, 'test');
 ```
-#### Complex Data Input
+#### Complex Data Output
 
 ```ts
 import { ComplexDataOutput } from 'wps-ng'
@@ -402,4 +403,4 @@ To get help in running wps-js, please use the Geoprocessing community mailing li
 Please leave an issue on GitHub if you have any bug reports or feature requests: https://github.com/52North/wps-js/issues
 
 Contact: Benjamin Proß (b.pross@52north.org)
-
+Contact: Karan Singh (singkara@yorku.ca)
