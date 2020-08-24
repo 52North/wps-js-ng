@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-/*
+
 import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
 import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
 import {ComplexDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/complex-data-output';
@@ -9,9 +9,11 @@ import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/
 import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
 import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
 import {ProcessDescriptionResponse} from '../../../projects/wps-ng/src/model/process.description/process-description-response';
-*/
+import {Format} from '../../../projects/wps-ng/src/model/process.description/format';
+import {DataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/data-input';
+import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/data-output';
 
-import {
+/*import {
   BBoxDataInput, BBoxDataOutput, DataInput,
   ComplexDataInput, ComplexDataOutput, DataOutput,
   ExecuteResponse, Format,
@@ -19,8 +21,9 @@ import {
   LiteralDataOutput,
   ProcessDescriptionResponse,
   WpsNgService
-} from 'wps-ng';
+} from 'wps-ng';*/
 import {ToastrService} from 'ngx-toastr';
+
 
 
 
