@@ -12,6 +12,21 @@ export class BBoxDataOutput implements DataOutput{
   readonly upperCorner: string;
   readonly transmission: string;
 
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @crs coordinate reference system URI
+   * @dimension number of dimensions in this CRS
+   * @lowerCorner orderedSequence of double values
+   * @upperCorner orderedSequence of double values
+   * @transmission either "value" or "reference"
+   */
 
   constructor(identifier: string, mimeType: string, schema: string, encoding: string, crs: string,
               dimensions: string, lowerCorner: string, upperCorner: string, transmission?: string  ) {

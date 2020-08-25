@@ -8,10 +8,12 @@ export class LiteralDataDomains {
 
 
   constructor(literalDataDomainsJS: any) {
-    this._anyValue = literalDataDomainsJS.anyValue;
-    this._dataType = new DataType(literalDataDomainsJS.dataType);
-    this._defaultValue = literalDataDomainsJS.defaultValue;
-    this._unitOfMeasure = literalDataDomainsJS.unitOfMeasure;
+    if (literalDataDomainsJS != null){
+      this._anyValue = literalDataDomainsJS.anyValue;
+      this._dataType = new DataType(literalDataDomainsJS.dataType);
+      this._defaultValue = literalDataDomainsJS.defaultValue;
+      this._unitOfMeasure = literalDataDomainsJS.unitOfMeasure;
+    }
   }
 
   get anyValue(): boolean {

@@ -1,3 +1,4 @@
+
 export class Address {
 
   private readonly _deliveryPoint: string;
@@ -8,12 +9,14 @@ export class Address {
   private readonly _electronicMailAddress: string;
 
   constructor(addressJson: any) {
-    this._deliveryPoint = addressJson.deliveryPoint;
-    this._city = addressJson.city;
-    this._administrativeArea = addressJson.administrativeArea;
-    this._postalCode = addressJson.postalCode;
-    this._country = addressJson.country;
-    this._electronicMailAddress = addressJson.electronicMailAddress;
+    if (addressJson != null) {
+      this._deliveryPoint = addressJson.deliveryPoint;
+      this._city = addressJson.city;
+      this._administrativeArea = addressJson.administrativeArea;
+      this._postalCode = addressJson.postalCode;
+      this._country = addressJson.country;
+      this._electronicMailAddress = addressJson.electronicMailAddress;
+    }
   }
 
   get deliveryPoint(): string {

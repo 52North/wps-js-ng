@@ -88,17 +88,6 @@ declare namespace WpsServiceModule {
             lineage: boolean, inputs: Array<any>, outputs: Array<any>);
 
     /**
-     * Only important for WPS 1.0
-     *
-     * @callbackFunction a callback function that will be triggered with the
-     *                   parsed executeResponse as argument
-     * @storedExecuteResponseLocation the url, where the execute response
-     *                                document is located / can be retrieved
-     *                                from
-     */
-    parseStoredExecuteResponse_WPS_1_0(callback: (executeResponse) => any, storedExecuteResponseLocation);
-
-    /**
      * WPS 2.0 getStatus operation to retrieve the status of an executed job
      *
      * Not usable with WPS 1.0

@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-/*
+
 import {WpsNgService} from '../../../projects/wps-ng/src/lib/wps-ng.service';
 import {ExecuteResponse} from '../../../projects/wps-ng/src/model/execute.process/response/execute-response';
 import {ComplexDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/complex-data-input';
@@ -10,9 +10,9 @@ import {DataOutput} from '../../../projects/wps-ng/src/model/execute.process/req
 import {LiteralDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/literal-data-output';
 import {BBoxDataOutput} from '../../../projects/wps-ng/src/model/execute.process/request/output/b-box-data-output';
 import {BBoxDataInput} from '../../../projects/wps-ng/src/model/execute.process/request/input/b-box-data-input';
-*/
 
-import {
+
+/*import {
   BBoxDataInput, BBoxDataOutput,
   ComplexDataInput,
   ComplexDataOutput,
@@ -22,8 +22,8 @@ import {
   LiteralDataInput,
   LiteralDataOutput,
   WpsNgService
-} from 'wps-ng';
-import {ToastrService} from "ngx-toastr";
+} from 'wps-ng';*/
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -123,7 +123,7 @@ export class ExecuteExamplesComponent implements OnInit {
 
     const complexDataOutput: ComplexDataOutput = new ComplexDataOutput('result', 'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd',
-      'UTF-8', null, false, 'result', 'result');
+      'UTF-8', null, true, 'result', 'result');
 
     const dataOutputList = new Array<DataOutput>();
     dataOutputList.push(complexDataOutput);
@@ -164,7 +164,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [complexInput, literalInput];
 
     const complexOutput = new ComplexDataOutput('result', 'text/xml',
-      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
+      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, true, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
@@ -190,7 +190,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [complexInput, literalInput];
 
     const complexOutput = new ComplexDataOutput('result', 'text/xml',
-      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
+      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, false, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
@@ -216,7 +216,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [complexInput, literalInput];
 
     const complexOutput = new ComplexDataOutput('result', 'text/xml',
-      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
+      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', 'UTF-8', undefined, false, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
@@ -242,7 +242,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [complexInput];
 
     const complexOutput = new ComplexDataOutput('output', 'image/tiff',
-      undefined, undefined, undefined, undefined, undefined, undefined);
+      undefined, undefined, undefined, false, undefined, undefined);
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'r.resample', 'document',
@@ -270,7 +270,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [complexInput, literalInput];
 
     const complexOutput = new ComplexDataOutput('result', 'application/x-zipped-shp',
-      undefined, 'base64', undefined, undefined, undefined, undefined, undefined, undefined );
+      undefined, 'base64', undefined, true, undefined, undefined, undefined, undefined );
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.server.algorithm.SimpleBufferAlgorithm', 'document',
@@ -302,7 +302,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const inputs = [inputBoundingBox, mmin, mmax, zmin, zmax, p, etype, tlon, tlat];
 
     const complexOutput = new ComplexDataOutput('selected-rows', 'application/vnd.geo+json',
-      undefined, 'UTF-8', undefined, undefined, undefined, undefined, undefined, 'value');
+      undefined, 'UTF-8', undefined, false, undefined, undefined, undefined, 'value');
     const outputs = [complexOutput];
 
     const xmlRequestExecuteProcess = this.wpsService.getXmlRequestExecuteProcess( 'org.n52.wps.python.algorithm.QuakeMLProcessBBox', 'document',
@@ -326,7 +326,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const literalInput1 = new LiteralDataInput('duration', null, null, '1010');
     const literalInput = new LiteralDataInput('literalInput', null, null, '0.05');
     const complexInput = new ComplexDataInput('complexInput', 'text/xml',
-      null, null, null,
+      null, null, false,
       '<test><test2>hello</test2></test>');
 
     const inputs = [complexInput, literalInput1, literalInput, boundingBoxInput ];
@@ -336,7 +336,7 @@ export class ExecuteExamplesComponent implements OnInit {
     const bboxOutput =  new BBoxDataOutput('boundingboxOutput', 'text/xml', undefined,
       undefined, 'EPSG:4326', undefined, undefined, undefined);
     const complexOutput = new ComplexDataOutput('complexOutput', 'text/xml', undefined, undefined,
-      undefined, undefined, undefined, undefined, undefined, 'value');
+      undefined, true, undefined, undefined, undefined, 'value');
 
     const outputs = [ literalOutput, bboxOutput, complexOutput];
 

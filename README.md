@@ -306,7 +306,7 @@ import { LiteralDataInput } from 'wps-ng'
 #### Complex Data Input
 
 ```ts
-import { ComplexDataOutput } from 'wps-ng'
+import { ComplexDataInput } from 'wps-ng'
 /*  @params:
 *    identifier: string, 
 *    mimeType: string, 
@@ -319,9 +319,10 @@ import { ComplexDataOutput } from 'wps-ng'
 *    value?: any,            // Optional param
 *    transmission?: string   // Optional param
 */
-const complexDataOutput: ComplexDataOutput = new ComplexDataOutput('result', 'text/xml',
-      'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd',
-      'UTF-8', null, false, 'result', 'result');
+
+const complexInput = new ComplexDataInput('data',
+  'text/xml', 'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd', null, true,
+  'http://geoprocessing.demo.52north.org:8080/geoserver/wfs?SERVICE=WFS&amp;VERSION=1.0.0&amp;REQUEST=GetFeature&amp;TYPENAME=topp:tasmania_roads&amp;SRS=EPSG:4326&amp;OUTPUTFORMAT=GML3');
 ```
 
 #### Bounding Box Data Input
@@ -336,8 +337,6 @@ import { BBoxDataInput } from 'wps-ng'
 *    upperCorner: string
 */
 
-
-
     const inputBoundingBox = new BBoxDataInput('input-boundingbox', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
 ```
@@ -346,28 +345,75 @@ import { BBoxDataInput } from 'wps-ng'
 Very similar to Input Objects, Output Object Class are also packed in the library.
 
 
-#### Literal Data Input
+#### Literal Data Output
 ```ts
 import { LiteralDataOutput } from 'wps-ng'
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @asReference boolean, "true" or "false"
+   * @abstractValue new description as text of the 'Abstract' element
+   * 				  of the response document
+   * @dataType string value representing type of data such as 'application/xml'
+   * @uom unit of measure; may be 'undefined'
+   * @value the value of data in the received response
+   * @transmission either "value" or "reference"
+   */
 
  const literalOutput = new LiteralDataOutput('literalOutput', 'text/xml', undefined, undefined,
        undefined, undefined, undefined, undefined, 'test');
 ```
-#### Complex Data Input
+#### Complex Data Output
 
 ```ts
 import { ComplexDataOutput } from 'wps-ng'
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @uom unit of measure; may be 'undefined'
+   * @asReference boolean, "true" or "false"
+   * @title new title
+   * @abstractValue new description as text of the 'Abstract' element
+   * 				  of the response document
+   * @transmission either "value" or "reference"
+   */
 
 const complexDataOutput: ComplexDataOutput = new ComplexDataOutput('result', 'text/xml',
       'http://schemas.opengis.net/gml/3.1.1/base/feature.xsd',
-      'UTF-8', null, false, 'result', 'result');
+      'UTF-8', null, false, 'result', 'result', 'value');
 ```
 
 #### Bounding Box Data Output
 
 ```ts
 import { BBoxDataOutput } from 'wps-ng'
-
+  /**
+   * the following parameters are mandatory: identifier
+   *
+   * the rest might be set to 'undefined'!
+   *
+   * @identifier output-request identifier
+   * @mimeType MIME type of the input; may be 'undefined'
+   * @schema reference to a schema; may be 'undefined'
+   * @encoding encoding; may be 'undefined'
+   * @crs coordinate reference system URI
+   * @dimension number of dimensions in this CRS
+   * @lowerCorner orderedSequence of double values
+   * @upperCorner orderedSequence of double values
+   * @transmission either "value" or "reference"
+   */
 const bboxOutput =  new BBoxDataOutput('boundingboxOutput', undefined, undefined,
       undefined, undefined, undefined, undefined, undefined);
 ```
@@ -402,4 +448,4 @@ To get help in running wps-js, please use the Geoprocessing community mailing li
 Please leave an issue on GitHub if you have any bug reports or feature requests: https://github.com/52North/wps-js/issues
 
 Contact: Benjamin Proß (b.pross@52north.org)
-
+Contact: Karan Singh (singkara@yorku.ca)
