@@ -53,5 +53,4 @@ export class CapabilitiesComponent implements OnInit {
   sendResponse(){
     this.messageEvent.emit(this.capabilitiesResponse);
   }
-
 }
