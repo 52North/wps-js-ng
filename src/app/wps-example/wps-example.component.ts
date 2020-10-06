@@ -13,7 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 export class WpsExampleComponent implements OnInit {
   title: CapabilitiesResponse;
-  selectedURL = 'http://geoprocessing.demo.52north.org:8080/javaps/service';
+  selectedURL = 'https://testbed.dev.52north.org/javaps/service';
   selectedVersion = '2.0.0';
   urls: string[];
   versions: string[];
@@ -29,6 +29,7 @@ export class WpsExampleComponent implements OnInit {
   ngOnInit(): void {
     this.wpsService = new WpsNgService(this.selectedVersion, this.selectedURL);
     this.urls = [
+      'https://testbed.dev.52north.org/javaps/service',
       'http://geoprocessing.demo.52north.org:8080/javaps/service',
       'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
       'https://ows.terrestris.de/deegree-wps/services',

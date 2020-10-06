@@ -75,11 +75,11 @@ export class ExecuteProcessComponent implements OnInit {
   constructor( private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
+    this.wpsService = new WpsNgService('2.0.0', 'https://testbed.dev.52north.org/javaps/service');
     this.wpsService.processDescriptionGet('org.n52.javaps.test.EchoProcess', (response: ProcessDescriptionResponse) => {
       this.processDescriptionResponse = response;
     } );
-    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
+    this.wpsService = new WpsNgService('2.0.0', 'https://testbed.dev.52north.org/javaps/service');
 
   }
 

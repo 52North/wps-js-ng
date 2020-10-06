@@ -319,7 +319,7 @@ export class ExecuteExamplesComponent implements OnInit {
   }
 
   executeExample_echoProcess() {
-    this.wpsService = new WpsNgService('2.0.0', 'http://geoprocessing.demo.52north.org:8080/javaps/service');
+    this.wpsService = new WpsNgService('2.0.0', 'https//testbed.dev.52north.org/javaps/service');
 
     const boundingBoxInput = new BBoxDataInput('boundingboxInput', 'EPSG:4326', '2',
       '-14.093957177836224 -260.2059521933809', '-14.00869637063467 -260.2059521933809');
